@@ -15,7 +15,9 @@
 # git commit -m"[message]" (commit lên Stage Area)
 # git push (đẩy các commit từ Stage Area lên server)
 # git pull (kéo code thay đổi từ trên server về local)
-
+# Khi dùng git pull để đồng bộ code từ 2 brand khác nhau đã được push, có thể chọn:
+# Accept Current Change   : chọn sự thay đổi code từ máy mình
+# Accept Incomming Change : chọn sự thay đổi từ trên server (tức commit từ người khác)
 # KHÔNG CHỈNH SỬA - NOT EDIT HERE
 system/info.php
 system/gd.php

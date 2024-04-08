@@ -1,0 +1,11 @@
+# git rm --cached <filename>
+# git add <filename>
+# git rm --cached .
+#
+# KHÔNG CHỈNH SỬA - NOT EDIT HERE
+system/info.php
+system/gd.php
+.htaccess
+config/database.php
+config/URL.php
+config/SMTP.php

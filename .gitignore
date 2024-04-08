@@ -1,23 +1,34 @@
-# Step 1: Create a repo in website github.com
-# Step 2: Open Terminal in VSCode (Ctrl + Shift + ~)
-# Step 3: git init (tạo file .git ở local)
-# Step 4: git add . (thêm toàn bộ code vào local)
-# Step 5: git commit -m"Message" (commit code vào Stage Area)
-# Step 6: git remote add origin [link your repo] (thêm origin từ trên server git)
-# Step 7: git push -u master (hoặc main tùy tên của local - lệnh này để push code từ stage area lên server - lúc này lên repo check là thấy code)
+#!!# Các bước khởi tạo repo trên GITHUB #!!#
 
-###### CÁC LỆNH GIT HAY DÙNG #####
+# B1: Tạo mới 1 repo trên github
+# B2: mở Terminal VSCode (Ctrl + Shift + ~)
+# B3: git init (tạo file .git ở local)
+# B4: git add . (thêm toàn bộ code vào local)
+# B5: git commit -m"Message" (commit code vào Stage Area)
+# B6: git remote add origin [link your repo] (thêm origin từ trên server git)
+# B7: git push -u master (hoặc main tùy tên của local - lệnh này để push code từ stage area lên server - lúc này lên repo check là thấy code)
+
+#!!# CÁC LỆNH GIT HAY DÙNG #!!#
 
 # git status (kiểm tra trạng thái của repo)
-# git log (coi các log đã commit lên server)
-# git add . (thêm các file chưa được commit - dấu chấm là add tất cả file)
+# git log (coi các log đã commit lên server) -> Sau khi xem xong nhấn nút Q để thoát chế độ LOG
+# git add . (thêm các file chưa được commit -> dấu chấm là add tất cả file)
 # git add [Name File] (như trên, nhưng theo từng file, [Name File]: nhập tên file cần add)
-# git commit -m"[message]" (commit lên Stage Area)
+# git reset (hủy các file đã add vào Stage Area - tức lệnh git add)
+# git commit -m"[message]" (commit lên Stage Area - [message] : ghi chú cho commit này)
 # git push (đẩy các commit từ Stage Area lên server)
 # git pull (kéo code thay đổi từ trên server về local)
-# Khi dùng git pull để đồng bộ code từ 2 brand khác nhau đã được push, có thể chọn:
-# Accept Current Change   : chọn sự thay đổi code từ máy mình
-# Accept Incomming Change : chọn sự thay đổi từ trên server (tức commit từ người khác)
+## Khi dùng git pull để đồng bộ code từ 2 brand khác nhau đã được push (trường hợp có 2 commit khác cùng trên 1 file), có thể chọn:
+### Accept Current Change   : chọn sự thay đổi code từ máy mình
+### Accept Incomming Change : chọn sự thay đổi từ trên server (tức commit từ người khác)
+
+# git clone [URL REPO] (kéo repo từ server về máy mình)
+
+#!!# Branch #!!#
+# git branch [Name Branch] (thêm mới 1 branch, [Name Branch]: tên của branch cần tạo)
+# git branch (kiểm tra Branch, màu xanh lá: Branch bạn đang dùng)
+# git checkout [Name Branch] (chuyển qua Branch khác, [Name Branch]: tên branch muốn chuyển qua)
+#
 # KHÔNG CHỈNH SỬA - NOT EDIT HERE
 system/info.php
 system/gd.php

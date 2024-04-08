@@ -3,7 +3,8 @@
     <hr class="border border-danger">
 <?php
 if($verify == true){
-
+    $strTest = "Hiêu ĐZ SUPER SAIYAN BLUE LEVEL MAX";
+    echo str_replace(' ','',$strTest);
 
 
     #KHU VỰC CODE TEST

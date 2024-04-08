@@ -28,7 +28,7 @@
 # git branch [Name Branch] (thêm mới 1 branch, [Name Branch]: tên của branch cần tạo)
 # git branch (kiểm tra Branch, màu xanh lá: Branch bạn đang dùng)
 # git checkout [Name Branch] (chuyển qua Branch khác, [Name Branch]: tên branch muốn chuyển qua)
-#
+# git push --set-upstream origin [Name Branch] (thêm Branch mới lên server, lệnh này sẽ được thông báo nếu bạn muốn push commit từ branch mới tạo)
 # KHÔNG CHỈNH SỬA - NOT EDIT HERE
 system/info.php
 system/gd.php

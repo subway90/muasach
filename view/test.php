@@ -6,6 +6,8 @@ if($verify == true){
     $strTest = "Hiêu ĐZ SUPER SAIYAN BLUE LEVEL MAX";
     echo str_replace(' ','',$strTest);
 
+    $newCase = ['News','Events','Notifycation','Alert'];
+    print_r($newCase);
 
     #KHU VỰC CODE TEST
     function checkPass($input,$hash){

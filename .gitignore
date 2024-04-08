@@ -1,7 +1,20 @@
-# git rm --cached <filename>
-# git add <filename>
-# git rm --cached .
-#
+# Step 1: Create a repo in website github.com
+# Step 2: Open Terminal in VSCode (Ctrl + Shift + ~)
+# Step 3: git init (tạo file .git ở local)
+# Step 4: git add . (thêm toàn bộ code vào local)
+# Step 5: git commit -m"Message" (commit code vào Stage Area)
+# Step 6: git remote add origin [link your repo] (thêm origin từ trên server git)
+# Step 7: git push -u master (hoặc main tùy tên của local - lệnh này để push code từ stage area lên server - lúc này lên repo check là thấy code)
+
+###### CÁC LỆNH GIT HAY DÙNG #####
+
+# git status (kiểm tra trạng thái của repo)
+# git log (coi các log đã commit lên server)
+# git add . (thêm các file chưa được commit - dấu chấm là add tất cả file)
+# git add [Name File] (như trên, nhưng theo từng file, [Name File]: nhập tên file cần add)
+# git commit -m"[message]" (commit lên Stage Area)
+# git push (push lên server các commit)
+
 # KHÔNG CHỈNH SỬA - NOT EDIT HERE
 system/info.php
 system/gd.php

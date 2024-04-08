@@ -13,7 +13,8 @@
 # git add . (thêm các file chưa được commit - dấu chấm là add tất cả file)
 # git add [Name File] (như trên, nhưng theo từng file, [Name File]: nhập tên file cần add)
 # git commit -m"[message]" (commit lên Stage Area)
-# git push (push lên server các commit)
+# git push (đẩy các commit từ Stage Area lên server)
+# git pull (kéo code thay đổi từ trên server về local)
 
 # KHÔNG CHỈNH SỬA - NOT EDIT HERE
 system/info.php

@@ -6,6 +6,8 @@ if($verify == true){
     $strTest = "Hiêu ĐZ SUPER SAIYAN BLUE LEVEL MAX";
     echo str_replace(' ','',$strTest);
 
+    $color = array('orange,red,blue,cyan,green,black,white');
+    echo $color[0];
 
     #KHU VỰC CODE TEST
     function checkPass($input,$hash){

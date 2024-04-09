@@ -10,20 +10,22 @@
 
 #!!# CÁC LỆNH GIT HAY DÙNG #!!#
 
-# git status (kiểm tra trạng thái của repo)
-# git log (coi các log đã commit lên server) -> Sau khi xem xong nhấn nút Q để thoát chế độ LOG
 # git add . (thêm các file chưa được commit -> dấu chấm là add tất cả file)
-# git add [Name File] (như trên, nhưng theo từng file, [Name File]: nhập tên file cần add)
+# git add [Name File] (như trên,nhưng  theo từng file, [Name File]: nhập tên file cần add)
 # git reset (hủy các file đã add vào Stage Area - tức lệnh git add)
-# git reset --hard [id commit] (Quay về commit cũ, [id commit]: khi dùng lệnh git log)
-# git push --force (Đẩy các code cũ từ commit đã quay lại khi - tức sau khi dùng lệnh reset --hard [id commit])
 # git commit -m"[message]" (commit lên Stage Area - [message] : ghi chú cho commit này)
 # git push (đẩy các commit từ Stage Area lên server)
 # git pull (kéo code thay đổi từ trên server về local)
 ## Khi dùng git pull để đồng bộ code từ 2 brand khác nhau đã được push (trường hợp có 2 commit khác cùng trên 1 file), có thể chọn:
 ### Accept Current Change   : chọn sự thay đổi code từ máy mình
 ### Accept Incomming Change : chọn sự thay đổi từ trên server (tức commit từ người khác)
+# git status (kiểm tra trạng thái của repo)
+# git log (coi các log đã commit lên server) -> Sau khi xem xong nhấn nút Q để thoát chế độ LOG
 
+#!!# CÁC LỆNH GIT ÍT DÙNG #!!#
+
+# git reset --hard [id commit] (Quay về commit cũ, [id commit]: khi dùng lệnh git log)
+# git push --force (Đẩy các code cũ từ commit đã quay lại khi - tức sau khi dùng lệnh reset --hard [id commit])
 # git clone [URL REPO] (kéo repo từ server về máy mình)
 
 #!!# Branch #!!#

@@ -52,9 +52,9 @@ if(!empty($_SESSION['user'])){
             }else alert($checkImage);
         }
     }
-    require_once '../view/header.php';
-    require_once '../view/info.php';
+    require_once '../../view/user/header.php';
+    require_once '../../view/user/info.php';
 }else{
-    include "../view/header.php";
-    require_once '../view/404.php';
+    include "../../view/user/header.php";
+    require_once '../../view/user/404.php';
 }

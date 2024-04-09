@@ -126,5 +126,5 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
 }
 
 show_alert($_SESSION['alert']);
-include "../view/header.php";
-include "../view/cart.php";
+include "../../view/user/header.php";
+include "../../view/user/cart.php";

@@ -1,5 +1,6 @@
-
-
+<?php
+require_once 'user/header.php';
+?>
     <!-- 404 Start -->
     <div class="container-fluid py-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center">
@@ -15,3 +16,6 @@
         </div>
     </div>
     <!-- 404 End -->
+<?php
+require_once 'user/footer.php';
+?>

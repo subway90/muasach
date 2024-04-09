@@ -1,5 +1,5 @@
 <?php
-require_once "../view/header.php";
+require_once "../../view/user/header.php";
 show_alert($_SESSION['alert']);
 $message = "";
 $arr_error = [];
@@ -25,6 +25,6 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) { //có REQUEST[1]
             }else $arr_error[] = "Vui lòng nhập nội dung bình luận";
         }
         # [RENDER VIEW]
-        require_once "../view/detail.php";
-    }else require_once "../view/404.php";
-}else require_once "../view/404.php";
+        require_once "../../view/user/detail.php";
+    }else require_once "../../view/user/404.php";
+}else require_once "../../view/user/404.php";

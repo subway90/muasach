@@ -8,15 +8,15 @@ ob_start();
 session_start();
 
 # [FILES]
-include "../config/URL.php";
-include "../config/database.php";
-include "../model/pdo.php";
-include "../model/function.php";
-include "../model/product.php";
-include "../model/user.php";
-include "../model/cart.php";
-include "../model/bill.php";
-include "../model/notifycation.php";
+include "../../config/URL.php";
+include "../../config/database.php";
+include "../../model/pdo.php";
+include "../../model/function.php";
+include "../../model/user/product.php";
+include "../../model/user/user.php";
+include "../../model/user/cart.php";
+include "../../model/user/bill.php";
+include "../../model/user/notifycation.php";
 
 # [VARIBLE START]
 if(!empty($_SESSION['user'])){
@@ -92,20 +92,20 @@ if(isset($_GET['act'])){
                 break;
             case "view-modal-bill":
                 $title='Thanh toán';
-                include "../view/header.php";
-                include "../view/bill.php";
+                include "../../view/user/header.php";
+                include "../../view/user/bill.php";
                 break;
             default:
                 $title = "404 NOT FOUND";
-                include "../view/header.php";
-                include "../view/404.php";
+                include "../../view/user/header.php";
+                include "../../view/user/404.php";
                 break;
         }
 }else{
     $title = "Trang chủ";
     show_alert($_SESSION['alert']);
-    include "../view/header.php";
-    include "../view/home.php";
+    include "../../view/user/header.php";
+    include "../../view/user/home.php";
 }
 # [LAYOUT] footer
-include "../view/footer.php";
+include "../../view/user/footer.php";

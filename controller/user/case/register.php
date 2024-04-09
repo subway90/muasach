@@ -1,5 +1,5 @@
 <?php
-include "../view/header.php";
+include "../../view/user/header.php";
 
 $user = ""; $pass = "";$verifypass=""; $hovaten = ""; $email = ""; $sodienthoai = ""; $diachi = ""; $point_valid_register=0;$checkVeryfyPass = false;$susscess = false;
 $arr_error[] = array();
@@ -56,4 +56,4 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $susscess = true;
     }
 }
-include "../view/register.php";
+include "../../view/user/register.php";

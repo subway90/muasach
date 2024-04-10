@@ -3,10 +3,6 @@
 // print_r($_SERVER);
 // echo '</pre>'; exit;
 
-# [FUNCTION START]
-ob_start(); 
-session_start();
-
 # [FILES]
 include "../../config/URL.php";
 include "../../config/database.php";
@@ -18,6 +14,10 @@ include "../../model/user/cart.php";
 include "../../model/user/bill.php";
 include "../../model/user/notifycation.php";
 
+# [FUNCTION START]
+ob_start(); 
+session_start();
+show_alert();
 # [VARIBLE START]
 if(!empty($_SESSION['user'])){
 $bellActive = false; $notify = 0;
@@ -35,8 +35,9 @@ $activeModal = 'pay';
 
 # [SESSION]
 if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
-if(!isset($_SESSION['alert'])) $_SESSION['alert'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+if(!isset($_SESSION['alert'])) $_SESSION['alert'] = "";
+if(!isset($_SESSION['alert_2'])) $_SESSION['alert_2'] = "";
 
 # [CASE]
 if(isset($_GET['act'])){
@@ -103,7 +104,6 @@ if(isset($_GET['act'])){
         }
 }else{
     $title = "Trang chủ";
-    show_alert($_SESSION['alert']);
     include "../../view/user/header.php";
     include "../../view/user/home.php";
 }

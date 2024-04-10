@@ -9,10 +9,25 @@ function alert($input) {
  * Thực thi alert nếu có khai báo Session Alert, và xóa nội dung sau khi alert
  * @param $input nhập nội dung cần khai báo
  */
-function show_alert($input){
+function show_alert(){
     if(isset($_SESSION['alert']) && !empty($_SESSION['alert'])){
-        echo '<script>alert("'.$input.'")</script>';
+        echo '<script>alert("'.$_SESSION['alert'].'")</script>';
         unset($_SESSION['alert']);
+    }
+}
+/**
+ * Alert 2: thông báo fixed trên header
+ */
+function show_alert_2(){
+    if(isset($_SESSION['alert_2']) && !empty($_SESSION['alert_2'])){
+        echo '
+        <span class="wow fadeIn position-absolute position-fixed end-0 w-100 d-flex justify-content-end">
+            <div class="alert alert-success alert-dismissible show me-3" role="alert">
+                '.$_SESSION['alert_2'].'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </span>';
+        unset($_SESSION['alert_2']);
     }
 }
 /**
@@ -110,6 +125,15 @@ function getOneField($table,$field,$status){
  */
 function updateStatusById($table,$id,$status){
     $sql = "UPDATE ".$table." SET status ='".$status."' WHERE id=".$id;
+    pdo_execute($sql);
+}
+/**
+ * Xóa dòng trong bảng theo ID
+ * @param $table tên bảng cần xóa
+ * @param $id ID cần xóa
+ */
+function deleteOneById($table,$id){
+    $sql = "DELETE FROM  ".$table." WHERE id=".$id;
     pdo_execute($sql);
 }
 /**

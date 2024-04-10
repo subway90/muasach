@@ -14,11 +14,10 @@
                 <table class="table table-light table-border border-3 table-striped text-center mb-0">
                     <thead class="thead-dark">
                         <tr>
-                            <th colspan="4">Sản phẩm</th>
+                            <th class="text-start ps-4" colspan="4">Sản phẩm</th>
                             <th>Giá</th>
                             <th>Số lượng</th>
-                            <th>Cập nhật</th>
-                            <!-- <th>Tổng</th> -->
+                            <th>Thành tiền</th>
                             <th>Xóa</th>
                         </tr>
                     </thead>
@@ -27,34 +26,28 @@
                             if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
                                 if(!empty($_SESSION['cart'])){ //Nếu CART có SP
                                     for ($i=0; $i < count($_SESSION['cart']); $i++) {
-                                        $product = getOneByID('products',$_SESSION['cart'][$i]['id'],'1') ;// select SP theo ID
+                                        $product = getOneFieldByID('products','image,name,quantity quantityMax,price,priceSale',$_SESSION['cart'][$i]['id'],'1');// select SP theo ID
+                                        extract($_SESSION['cart'][$i]);
                                         extract($product);
                                         if($priceSale!=0) $price = $priceSale;
                         ?>
                         <tr>
-                            <td colspan="3" class="align-middle">
-                                <img src="<?=URL?>/uploads/product/<?=$image?>" alt="ẢNH SP ID:" style="width: 50px;">
-                            </td>
+                            <td colspan="3" class="align-middle"><img src="<?=URL?>/uploads/product/<?=$image?>" alt="ẢNH SP ID:" style="width: 50px;"></td>
+                            <td class="align-middle"><div class="text-start h6"><?=$name?></div></td>
+                            <td class="align-middle"><?=number_format($price)?> đ</td>
                             <td class="align-middle">
-                                <div class="text-start h6"><?=$name?></div>
-                            </td>
-                            <td class="align-middle">
-                            <?=$price?>
-                            </td>
-                            <td class="align-middle">
-                            <form action="<?=ACT?>gio-hang&edit" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="idCart" value="<?=$i?>">
-                                <input type="hidden" name="idProduct" value="<?=$_SESSION['cart'][$i]['id']?>">
-                                <div class="input-group mx-auto" style="width: 70px;">
-                                    <input name="quantity" type="number" min="1" max="200" class="form-control form-control-sm bg-primary text-light text-center" value="<?=$_SESSION['cart'][$i]['quantity']?>">
+                                <form method="post">
+                                <div class="input-group ms-lg-5">
+                                    <button name="quantity" value="<?=$quantity-1?>" class="btn btn-sm btn-primary <?php if($quantity==1) echo'disabled'?>">-</button>
+                                    <input type="hidden" name="idCart" value="<?=$i?>">
+                                    <span class="btn btn-sm btn-outline-primary"><?=$_SESSION['cart'][$i]['quantity']?></span>
+                                    <button name="quantity" value="<?=$quantity+1?>"  class="btn btn-sm btn-primary <?php if($quantity==$quantityMax) echo'disabled'?>">+</button>
                                 </div>
-                            <td class="align-middle">
-                                <button type="submit" class="btn btn-sm btn-outline-warning"><i class="fa fa-sync-alt"></i></button>
+                                </form>
                             </td>
-                            </form>
-                            </td>
+                            <td><?=number_format($price*$_SESSION['cart'][$i]['quantity'])?> đ</td>
                             <td class="align-middle">
-                                <a class="btn btn-sm btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$i+1?>"><i class="fa fa-times"></i></a>
+                                <a class="btn border-1 btn-sm btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$i+1?>"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         <?php 
@@ -70,14 +63,14 @@
                         <tr>
                             <td colspan="9" class="align-middle">Chưa có sản phẩm</td>
                         </tr>
-                        <?php
-                                }else{
-                                    for ($i=0; $i < count($cart); $i++) { 
-                                        $product = getOneByID('products',$cart[$i]['idProduct'],1);
-                                        extract($product);
-                                        extract($cart[$i]);
-                                        if($priceSale!=0) $price = $priceSale;
-                                    ?>
+                        <?php }else{
+                                for ($i=0; $i < count($cart); $i++) { 
+                                    $product = getOneFieldByID('products','image,name,price,priceSale,quantity quantityMax',$cart[$i]['idProduct'],1);
+                                    extract($product);
+                                    extract($cart[$i]);
+                                    if($priceSale!=0) $price = $priceSale;
+                                    $max = getOneFieldByID('products','quantity',$idProduct,0);
+                        ?>
                         <tr>
                             <td colspan="3" class="align-middle">
                                 <img src="<?=URL?>/uploads/product/<?=$image?>" alt="ẢNH SP ID:" style="width: 50px;">
@@ -88,20 +81,21 @@
                             <td class="align-middle">
                                 <?=$price?>
                             </td>
-                            <form action="<?=ACT?>gio-hang&edit" method="post" enctype="multipart/form-data">
-                            <td class="align-middle">
-                                <input type="hidden" name="id" value="<?=$cart[$i]['id']?>">
-                                <input type="hidden" name="idProduct" value="<?=$cart[$i]['idProduct']?>">
-                                <div class="input-group mx-auto" style="width: 70px;">
-                                    <input name="quantity" type="number" min="1" max="200" class="form-control form-control-sm bg-primary text-light text-center" value="<?=$cart[$i]['quantity']?>">
+                            <td class="align-middle text-center">
+                                <form method="post">
+                                <div class="input-group ms-lg-5">
+                                    <button name="quantity" value="<?=$quantity-1?>" class="btn btn-sm btn-primary <?php if($quantity==1) echo'disabled'?>">-</button>
+                                    <input type="hidden" name="idCart" value="<?=$id?>">
+                                    <span class="btn btn-sm btn-outline-primary"><?=$quantity?></span>
+                                    <button name="quantity" value="<?=$quantity+1?>"  class="btn btn-sm btn-primary <?php if($quantity==$quantityMax) echo'disabled'?>">+</button>
                                 </div>
+                                </form>
                             </td>
                             <td class="align-middle">
-                                <button type="submit" class="btn btn-sm btn-outline-warning"><i class="fa fa-sync-alt"></i></button>
+                                <?=number_format($price*$quantity)?> đ
                             </td>
-                            </form>
                             <td class="align-middle">
-                                <a class="btn btn-sm btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$cart[$i]['id']?>"><i class="fa fa-times"></i></a>
+                                <a class="btn btn-sm border-1 btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$cart[$i]['id']?>"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         <?php
@@ -112,10 +106,9 @@
                     </tbody>
                 </table>
                 <div class="w-100 mt-2">
-                <a href="<?=ACT?>san-pham" class="float-end btn btn-sm btn-primary">Mua sản phẩm</a>
                 <?php
                 if(!empty($_SESSION['cart']) || count($cart) != 0){ ?>
-                <a href="#" class="float-end btn btn-sm btn-outline-danger me-2"  data-bs-toggle="modal" data-bs-target="#delcart">Xóa tất cả</a>
+                <a href="#" class="float-end btn border-1 btn-sm btn-outline-danger me-2"  data-bs-toggle="modal" data-bs-target="#delcart">Xóa tất cả</a>
                 <?php }?>
                     <!-- [MODAL] -->
                     <div class="modal fade" id="delcart" tabindex="-1" aria-labelledby="delcartLabel" aria-hidden="true">

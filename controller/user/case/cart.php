@@ -3,20 +3,6 @@ $total = 0;
 //Nếu đã ĐĂNG NHẬP -> gọi CART trong Database và truyền dữ liệu vào mảng $cart
 if(!empty($_SESSION['user'])) $cart = getAllByIdUser('cart',$_SESSION['user']['id'],1);
 else $cart = [];
-// [THÊM SP MỚI VÀ CART]
-if(isset($_GET['add'])){
-    if(empty($_SESSION['user'])){ // nếu CHƯA ĐĂNG NHẬP (GUEST)
-        $check = checkCart($_GET['id']);
-        if($check == -1) $_SESSION['cart'][] = ['id' => $_GET['id'],'quantity' => $_GET['quantity']]; // nếu không trùng ID-> thêm SP vào CART
-        else  $_SESSION['cart'][$check]['quantity']++; // nếu trùng ID-> thêm số lượng (+1) vào ID đã trùng
-        header("Location:".ACT."gio-hang");
-    }else{ // nếu ĐÃ ĐĂNG NHẬP (USER)
-        $check = checkCartByID($_GET['id']);
-        if(empty($check)) addCart($_SESSION['user']['id'],$_GET['id'],$_GET['quantity']);
-        else updateQuantity($check,'quantity+1');
-    }
-    header("Location:".ACT."gio-hang");
-}
 
 // [XÓA 1 SP TRONG CART]
 if(isset($_GET['delete']) && !empty($_GET['delete'])) {
@@ -36,16 +22,12 @@ if(isset($_GET['close'])){
 }
 
 // [THÊM SỐ LƯỢNG SP]
-if(isset($_GET['edit']) && isset($_POST['quantity']) && !empty($_POST['quantity'])){
-    $quantityProduct = getOneFieldByID('products','quantity',$_POST['idProduct'],0);
-    // var_dump($_POST['quantity']); exit;
-    if($_POST['quantity'] > $quantityProduct['quantity']) $_SESSION['alert'] = "Số lượng không đủ để bạn mua | Số lượng còn hiện tại còn ".$quantityProduct['quantity'];
-    else{
-        if(empty($_SESSION['user'])){ //Nếu chưa đăng nhập -> Sửa ở SESSION
-            $_SESSION['cart'][$_POST['idCart']]['quantity'] = $_POST['quantity'];
-        }else updateQuantity($_POST['id'],$_POST['quantity']); //Nếu đã đăng nhập -> Sửa ở Database
+if(isset($_POST['quantity']) && !empty($_POST['quantity'])){
+        //Nếu chưa đăng nhập -> Sửa ở SESSION
+        if(empty($_SESSION['user'])) $_SESSION['cart'][$_POST['idCart']]['quantity'] = $_POST['quantity'];
+         //Nếu đã đăng nhập -> Sửa ở Database
+        else updateQuantity($_POST['idCart'],$_POST['quantity']);
         header("Location:".ACT."gio-hang");
-    }
 }
 
 // [TOTAL]

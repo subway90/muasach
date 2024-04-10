@@ -1,5 +1,5 @@
 <?php
-require_once "../view/header.php";
+require_once "../../view/user/header.php";
 $verify = false;
 if(isset($_POST['password']) && !empty($_POST['password'])){
     $password = $_POST['password'];
@@ -8,4 +8,4 @@ if(isset($_POST['password']) && !empty($_POST['password'])){
     if(password_verify($password, $hash)) $verify = true;
     else alert('Mật khẩu sai');
 }
-require_once "../view/test.php";
+require_once "../../view/test.php";

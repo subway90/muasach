@@ -5,7 +5,7 @@
 
 # [FILES]
 include "../../config/URL.php";
-include "../../config/database.php";
+include "../../config/APP.php";
 include "../../model/pdo.php";
 include "../../model/function.php";
 include "../../model/user/product.php";
@@ -20,7 +20,7 @@ session_start();
 show_alert();
 
 # [VARIBLE START]
-$update = false;
+$update = UPDATE;
 if(!empty($_SESSION['user'])){
 $bellActive = false; $notify = 0;
 $listFB = getAllByIdUser('feedback',$_SESSION['user']['id'],1);

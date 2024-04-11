@@ -18,7 +18,9 @@ include "../../model/user/notifycation.php";
 ob_start(); 
 session_start();
 show_alert();
+
 # [VARIBLE START]
+$update = true;
 if(!empty($_SESSION['user'])){
 $bellActive = false; $notify = 0;
 $listFB = getAllByIdUser('feedback',$_SESSION['user']['id'],1);
@@ -41,6 +43,10 @@ if(!isset($_SESSION['alert_2'])) $_SESSION['alert_2'] = "";
 
 # [CASE]
 if(isset($_GET['act'])){
+    if($update === true){
+        require_once 'case/update.php';
+        exit;
+    }
     $arrayURL = explode('/',$_GET['act']);
     $act=$arrayURL[0];
         switch($act) {

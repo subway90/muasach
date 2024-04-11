@@ -171,7 +171,7 @@ show_alert($_SESSION['alert']);
                         <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
                             <li>
                                 <a class="dropdown-item" href="<?=URL?>">Trang chủ</a>
-                                <a class="dropdown-item text-danger" href="<?=ACT."logout"?>">Thoát</a>
+                                <a class="dropdown-item text-danger" href="<?=ACT."dang-xuat"?>">Thoát</a>
                             </li>
                         </ul>
                     </div>

@@ -20,7 +20,7 @@ session_start();
 show_alert();
 
 # [VARIBLE START]
-$update = true;
+$update = false;
 if(!empty($_SESSION['user'])){
 $bellActive = false; $notify = 0;
 $listFB = getAllByIdUser('feedback',$_SESSION['user']['id'],1);

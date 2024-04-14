@@ -1,6 +1,6 @@
 <?php
     require_once "../../config/URL.php";
-    require_once "../../config/database.php";
+    require_once "../../config/APP.php";
 session_start();
 ob_start();
 // echo '<pre>';

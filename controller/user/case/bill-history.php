@@ -1,5 +1,5 @@
 <?php
-require_once "../../../view/user/user/header.php";
+require_once "../../view/user/header.php";
 if(!empty($_SESSION['user'])){
     $listBill = getAllBill($_SESSION['user']['id']);
     if(isset($arrayURL[1]) && !empty($arrayURL[1])){
@@ -7,7 +7,7 @@ if(!empty($_SESSION['user'])){
         if(!empty($listDetail)){
             $Bill = getOneBillByToken($arrayURL[1]);
             extract($Bill);
-            require_once "../../../view/user/user/bill-detail.php";
-        }else require_once "../../../view/user/user/404.php";
-    }else require_once "../../../view/user/user/bill-history.php";
-}else require_once "../../../view/user/user/404.php";
+            require_once "../../view/user/bill-detail.php";
+        }else require_once "../../view/user/404.php";
+    }else require_once "../../view/user/bill-history.php";
+}else require_once "../../view/user/404.php";

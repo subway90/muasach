@@ -46,16 +46,18 @@
                 <div class="row ps-2">
                     <!-- [SẢN PHẨM] -->
                     <?php
-                    $product = getAll('products', 1);
+                    $product = getAll('products', 1);   
                     for ($i = 0; $i < count($product); $i++) {
                         extract($product[$i]);
                         extract(getOneFieldByID('author','name authorName',$idAuthor,1));
+                        extract(getOneFieldByID('publishing','name publishingName',$idPublishing,1));
                         ?>
                         <div class="product col-6 col-md-4 col-lg-3 p-2 wow fadeIn p-0" data-wow-delay="0.1s">
                             <a href="<?= ACT ?>chi-tiet/<?= createSlug($name) ?>">
                                 <div class="product-item text-center border h-100 p-0 py-3">
                                     <img class="img-fluid mb-4" src="<?= URL ?>/uploads/product/<?= $image ?>" alt="">
-                                    <div class="author"><?=$authorName?></div>
+                                    <div class="author d-none"><?=$authorName?></div>
+                                    <div class="publishing d-none"><?=$publishingName?></div>
                                     <!-- <div class="mb-2">
                                         <small class="fa fa-star text-primary"></small>
                                         <small class="fa fa-star text-primary"></small>

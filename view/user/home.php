@@ -1,5 +1,5 @@
     <!-- Courosel Start -->
-    <div class="container wow fadeIn">
+    <div class="container wow fadeIn position-relative d-flex">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="4000">
@@ -12,65 +12,71 @@
                 <img src="<?=URL?>/uploads/system/carousel/Saigonbooks_Gold_Ver2_MainBanner_1920x700.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="position-absolute top-50 d-flex mx-auto justify-content-between w-100">
+                <div class="btn btn sm btn-primary rounded-pill mx-1" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <i class="mt-1 fa-2x fas fa-angle-double-left"></i>
+                </div>
+                <div class="btn btn sm btn-primary rounded-pill mx-1" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <i class="mt-1 fa-2x fas fa-angle-double-right"></i>
+                </div>
+            </span>
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> -->
         </div>
     </div>
     <!-- Carousel End -->
 
-    <!-- Hero Start -->
-    <!-- <div class="container-fluid bg-primary hero-header mb-5">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 text-center text-lg-start">
-                    <h3 class="fw-light text-white animated slideInRight">Natural & Organic</h3>
-                    <h1 class="display-4 text-white animated slideInRight">Hair <span class="fw-light text-dark">Shampoo</span> For Healthy Hair</h1>
-                    <p class="text-white mb-4 animated slideInRight">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Etiam feugiat rutrum lectus, sed auctor ex malesuada id. Orci varius natoque penatibus et
-                        magnis dis parturient montes.</p>
-                    <a href="" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">Shop Now</a>
-                    <a href="" class="btn btn-outline-dark py-2 px-4 animated slideInRight">Contact Us</a>
-                </div>
-                <div class="col-lg-6">
-                    <img class="img-fluid animated pulse infinite" src="img/shampoo.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Hero End -->
-
-
     <!-- Feature Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-4">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                <div class="col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="feature-item position-relative bg-primary text-center p-3">
                         <div class="border py-5 px-3">
-                            <i class="fa fa-leaf fa-3x text-dark mb-4"></i>
-                            <h5 class="text-white mb-0">100% Natural</h5>
+                            <i class="fas fa-truck fa-3x mb-4 text-muted"></i>
+                            <h5  class="text-white mb-0 fs-6">
+                                <div class=" animated pulse infinite">Miễn phí giao hàng</div>
+                                <div class="small text-dark mt-lg-2">với đơn từ 200K</div>
+                            </h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                <div class="col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="feature-item position-relative bg-primary text-center p-3">
                         <div class="border py-5 px-3">
-                            <i class="fa fa-tint-slash fa-3x text-dark mb-4"></i>
-                            <h5 class="text-white mb-0">Anti Hair Fall</h5>
+                            <i class="fas fa-sync-alt fa-3x mb-4 text-muted"></i>
+                            <h5 class="text-white mb-0 fs-6">
+                                <div class=" animated pulse infinite">Miễn phí đổi, trả</div>
+                                <div class="small text-dark mt-lg-2">trong 30 ngày</div>
+                            </h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                <div class="col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="feature-item position-relative bg-primary text-center p-3">
                         <div class="border py-5 px-3">
-                            <i class="fa fa-times fa-3x text-dark mb-4"></i>
-                            <h5 class="text-white mb-0">Hypoallergenic</h5>
+                            <i class="fas fa-check-square fa-3x mb-4 text-muted"></i>
+                            <h5 class="text-white mb-0 fs-6">
+                                <div class=" animated pulse infinite">Chất lượng cao</div>
+                                <div class="small text-dark mt-lg-2">Hàng nhập có nguồn gốc</div>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-item position-relative bg-primary text-center p-3">
+                        <div class="border py-5 px-3">
+                            <i class="fas fa-phone fa-3x mb-4 text-muted"></i>
+                            <h5 class="text-white mb-0 fs-6">
+                                <div class=" animated pulse infinite">Hỗ trợ 24/7</div>
+                                <div class="small text-dark mt-lg-2">Hotline: 0979 651 651</div>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -78,9 +84,6 @@
         </div>
     </div>
     <!-- Feature End -->
-
-
-    
 
     <!-- Deal Start -->
     <div class="container-fluid deal bg-primary my-5 py-5">
@@ -97,19 +100,9 @@
                             <h1 class="display-4 text-primary mb-4"><?=number_format(130000)?> đ</h1>
                             <h5>Số lượng còn: 30 quyển</h5>
                             <p class="mb-4">Tác giả: Thích Nhất Hạnh</p>
-                            <div class="row g-0 cdt mb-4">
-                                <!-- <div class="col-3">
-                                    <h1 class="display-6" id="cdt-days"></h1>
-                                </div> -->
-                                <div class="col-4">
-                                    <h1 class="display-6" id="cdt-hours"></h1>
-                                </div>
-                                <div class="col-4">
-                                    <h1 class="display-6" id="cdt-minutes"></h1>
-                                </div>
-                                <div class="col-4">
-                                    <h1 class="display-6" id="cdt-seconds"></h1>
-                                </div>
+                            <div class="text-danger text-start"><i>Thời gian KM còn:</i></div>
+                            <div class="row g-0 mb-4 bg-dark text-light rounded-3 p-2 fs-5">
+                                <span id="time"></span>
                             </div>
                             <a class="btn btn-primary py-2 px-4" href="">Mua ngay</a>
                         </div>

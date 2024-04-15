@@ -73,8 +73,9 @@
 <script src="<?= URL ?>/assets/lib/easing/easing.min.js"></script>
 <script src="<?= URL ?>/assets/lib/waypoints/waypoints.min.js"></script>
 <script src="<?= URL ?>/assets/lib/owlcarousel/owl.carousel.min.js"></script>
-<!-- Template Javascript -->
+<!-- Custom Javascript -->
 <script src="<?= URL ?>/assets/js/main.js"></script>
+<script src="<?= URL ?>/assets/js/countdown.js"></script>
 </body>
 
 </html>

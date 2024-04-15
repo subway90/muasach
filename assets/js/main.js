@@ -42,7 +42,7 @@
 
     // Countdown Timer
     function countDownTimer() {	
-        var endTime = new Date("31 March 2025 23:59:59 GMT+00:00");
+        var endTime = new Date("15 April 2024 23:59:59 GMT+00:00");
         endTime = (Date.parse(endTime) / 1000);
 
         var now = new Date();

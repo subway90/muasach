@@ -149,8 +149,8 @@
                 }
                 ?>
                  <div class="img-hide col-6 col-md-4 col-lg-3 py-2 wow fadeIn" data-wow-delay="0.1s">
-                    <a href="./index.php?act=detail&id=<?=$id?>">
-                    <div class=" product-item text-center border h-100 py-2 position-relative">
+                    <a href="<?=ACT?>chi-tiet/<?=$slug?>">
+                    <div class="product-item text-center border h-100 py-2 position-relative">
                         <img class="img-fluid mb-4" src="<?=URL?>/uploads/product/<?=$image?>" alt="">
                     <?php if(1==2){ ?> <!-- MẶT SAU PRODUCT [TEST]-->
                         <span class="img-back position-absolute start-0"><img class="img-fluid mb-4" src="<?=URL?>/uploads/product/conan_sau_tap_102.jpg" alt=""></span>
@@ -168,7 +168,7 @@
                             <?=number_format($price)?> <sup>đ</sup>
                             <?php if(isset($priceGoc)) echo'<span class="text-danger fs-6 small"><del>'.number_format($priceGoc).' đ</del></span>'; ?>
                         </h5>
-                        <a href="" class="btn btn-outline-primary px-3">Thêm vào giỏ</a>
+                        <a href="<?=ACT?>trang-chu&add&id=<?=$id?>&quantity=1" class="btn btn-outline-primary px-3">Thêm vào giỏ</a>
                     </div>
                     </a>
                 </div>

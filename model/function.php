@@ -21,7 +21,7 @@ function show_alert(){
 function show_alert_2(){
     if(isset($_SESSION['alert_2']) && !empty($_SESSION['alert_2'])){
         echo '
-        <span class="wow fadeIn position-absolute position-fixed end-0 w-100 d-flex justify-content-end">
+        <span style="z-index:2" class="wow fadeIn position-absolute position-fixed end-0 w-100 d-flex justify-content-end">
             <div class="alert alert-success alert-dismissible show me-3" role="alert">
                 '.$_SESSION['alert_2'].'
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

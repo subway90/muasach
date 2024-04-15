@@ -1,7 +1,7 @@
 <script src="<?=URL?>/assets/js/filter.js"></script>
 <!-- Product Start -->
 
-<div class="container-fluid">
+<div class="container-fluid pb-5">
     <div class="container">
         <div class="text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
             <nav class="mb-2" aria-label="breadcrumb">
@@ -100,6 +100,21 @@
                         </div>
                     <?php } ?>
                 </div>
+
+                <!-- [PHÂN TRANG] -->
+                <!-- <div class="col-12 text-center mb-4">
+                    <button class="btn border-1 btn-outline-primary disabled">&#10094;</button>
+                    <button class="btn border-1 btn-outline-primary active">1</button>
+                    <button class="btn border-1 btn-outline-primary">2</button>
+                    <button class="btn border-1 btn-outline-primary">3</button>
+                    <button class="btn border-1 btn-outline-primary">&#10095;</button>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product End -->
 <script>
 var inputPrice = document.getElementById('inputPrice');
 var selectedPrice = document.getElementById('selectedPrice');
@@ -109,16 +124,3 @@ inputPrice.oninput = function() {
     filterProducts();
 }
 </script>
-                <!-- [PHÂN TRANG] -->
-                <div class="col-12 text-center mb-4">
-                    <button class="btn border-1 btn-outline-primary disabled">&#10094;</button>
-                    <button class="btn border-1 btn-outline-primary active">1</button>
-                    <button class="btn border-1 btn-outline-primary">2</button>
-                    <button class="btn border-1 btn-outline-primary">3</button>
-                    <button class="btn border-1 btn-outline-primary">&#10095;</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Product End -->

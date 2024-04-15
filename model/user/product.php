@@ -3,7 +3,7 @@
  * @param int $limit giới hạn sản phẩm
  */
 function getProductNews($limit){
-    $sql = "SELECT * FROM products WHERE status = 1 order by dateCreate asc LIMIT ".$limit;
+    $sql = "SELECT * FROM products WHERE status = 1 order by dateCreate desc LIMIT ".$limit;
     $list = pdo_query($sql);
     return $list;
 }

@@ -134,8 +134,8 @@
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-start wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-primary mb-3"><span class="fw-light text-dark">Sách</span> Nổi bật</h1>
-                <p class="mb-5">Được đánh giá và xếp hạng bởi người tiêu dùng</p>
+                <h1 class="text-primary mb-3"><span class="fw-light text-dark">Sách</span> "Mới ra lò"</h1>
+                <p class="mb-5">Sản phẩm vừa được đăng bán mới nhất</p>
             </div>
             <div class="row">
                <?php
@@ -143,6 +143,10 @@
                for ($i=0; $i < count($listProductNews); $i++) { 
                 $san_pham = $listProductNews[$i];
                 extract($san_pham);
+                if($priceSale){
+                    $priceGoc = $price;
+                    $price = $priceSale;
+                }
                 ?>
                  <div class="img-hide col-6 col-md-4 col-lg-3 py-2 wow fadeIn" data-wow-delay="0.1s">
                     <a href="./index.php?act=detail&id=<?=$id?>">
@@ -160,7 +164,10 @@
                             <small>(99)</small>
                         </div>
                         <span class="h6 d-inline-block mb-2"><?=$name?></span>
-                        <h5 class="text-primary mb-3"><?=number_format($price)?> <sup>đ</sup></h5>
+                        <h5 class="text-primary mb-3">
+                            <?=number_format($price)?> <sup>đ</sup>
+                            <?php if(isset($priceGoc)) echo'<span class="text-danger fs-6 small"><del>'.number_format($priceGoc).' đ</del></span>'; ?>
+                        </h5>
                         <a href="" class="btn btn-outline-primary px-3">Thêm vào giỏ</a>
                     </div>
                     </a>
@@ -175,88 +182,95 @@
 
 
 
-    <!-- Feature Start -->
+    <!-- [EVENT] Start -->
     <div class="container-fluid py-5">
         <div class="container">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-primary mb-3"><span class="fw-light text-dark">Best Benefits Of Our</span> Natural Hair
-                    Shampoo</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s">
+                <h1 class="text-primary mb-3"><span class="fw-semi text-muted">chương trình</span> Mừng khai giảng</h1>
+                <p class="mb-5">Mua <strong>combo Chân Trời Sáng Tạo</strong>, nhận ưu đãi khủng và quà tặng</p>
             </div>
-            <div class="row g-4 align-items-center">
+            <div class="row g-4 align-items-start">
                 <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <div class="row g-5">
+
                         <div class="col-12 d-flex">
-                            <div class="btn-square rounded-circle border flex-shrink-0"
-                                style="width: 80px; height: 80px;">
-                                <i class="fa fa-check fa-2x text-primary"></i>
+                            <div class="btn-square rounded-circle border flex-shrink-0" style="width: 80px; height: 80px;">
+                                <i class="fa fa-box fa-2x text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <h5>Natural & Organic</h5>
+                                <h5>Trọn bộ SGK</h5>
                                 <hr class="w-25 bg-primary my-2">
-                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                                <span>Cả Học kì 1 và Học kì 2</span>
                             </div>
                         </div>
                         <div class="col-12 d-flex">
-                            <div class="btn-square rounded-circle border flex-shrink-0"
-                                style="width: 80px; height: 80px;">
-                                <i class="fa fa-check fa-2x text-primary"></i>
+                            <div class="btn-square rounded-circle border flex-shrink-0" style="width: 80px; height: 80px;">
+                                <i class="fa fa-stamp fa-2x text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <h5>Anti Hair Fall</h5>
+                                <h5>Mới mẻ, sáng tạo</h5>
                                 <hr class="w-25 bg-primary my-2">
-                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                                <span>Được tinh gọn trong gói kính trắng, xuất bản năm 2023</span>
                             </div>
                         </div>
                         <div class="col-12 d-flex">
-                            <div class="btn-square rounded-circle border flex-shrink-0"
-                                style="width: 80px; height: 80px;">
-                                <i class="fa fa-check fa-2x text-primary"></i>
+                            <div class="btn-square rounded-circle border flex-shrink-0" style="width: 80px; height: 80px;">
+                                <i class="fa fa-grin-stars fa-2x text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <h5>Anti-dandruff</h5>
+                                <h5>Chất lượng cao</h5>
                                 <hr class="w-25 bg-primary my-2">
-                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                                <span>Được khách hàng đánh giá cao trong năm vừa qua</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeIn p-5 p-lg-0" data-wow-delay="0.1s">
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="1500">
+                                <a href="<?=ACT?>/san-pham"><img class="img-fluid animated pulse infinite" src="<?=URL?>/uploads/product/combo-ctst-lop-1.jpg"></a>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="1500">
+                                <a href="<?=ACT?>/san-pham"><img class="img-fluid animated pulse infinite" src="<?=URL?>/uploads/product/combo-ctst-lop-2.jpg"></a>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="1500">
+                                <a href="<?=ACT?>/san-pham"><img class="img-fluid animated pulse infinite" src="<?=URL?>/uploads/product/combo-ctst-lop-3.jpg"></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                    <img class="img-fluid animated pulse infinite" src="img/shampoo.png">
-                </div>
                 <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                     <div class="row g-5">
                         <div class="col-12 d-flex">
-                            <div class="btn-square rounded-circle border flex-shrink-0"
-                                style="width: 80px; height: 80px;">
-                                <i class="fa fa-check fa-2x text-primary"></i>
+                            <div class="btn-square rounded-circle border flex-shrink-0" style="width: 80px; height: 80px;">
+                                <i class="fa fa-bolt fa-2x text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <h5>No Internal Side Effect</h5>
+                                <h5>Giảm giá giờ vàng</h5>
                                 <hr class="w-25 bg-primary my-2">
-                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                                <span>Siêu sale đến 20%</span>
                             </div>
                         </div>
                         <div class="col-12 d-flex">
-                            <div class="btn-square rounded-circle border flex-shrink-0"
-                                style="width: 80px; height: 80px;">
-                                <i class="fa fa-check fa-2x text-primary"></i>
+                            <div class="btn-square rounded-circle border flex-shrink-0" style="width: 80px; height: 80px;">
+                                <i class="fa fa-gift fa-2x text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <h5>No Skin Irritation</h5>
+                                <h5>Quà tặng</h5>
                                 <hr class="w-25 bg-primary my-2">
-                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                                <span>Bộ bao bì sách / Thước kẻ / Hộp bút</span>
                             </div>
                         </div>
                         <div class="col-12 d-flex">
-                            <div class="btn-square rounded-circle border flex-shrink-0"
-                                style="width: 80px; height: 80px;">
-                                <i class="fa fa-check fa-2x text-primary"></i>
+                            <div class="btn-square rounded-circle border flex-shrink-0" style="width: 80px; height: 80px;">
+                                <i class="fa fa-ticket-alt fa-2x text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <h5>No Artificial Smell</h5>
+                                <h5>Tặng voucher</h5>
                                 <hr class="w-25 bg-primary my-2">
-                                <span>Lorem ipsum dolor sit amet adipiscing elit aliquet.</span>
+                                <span>May mắn nhận voucher 50%</span>
                             </div>
                         </div>
                     </div>
@@ -264,7 +278,7 @@
             </div>
         </div>
     </div>
-    <!-- Feature End -->
+    <!-- [EVENT] End -->
 
 
     <!-- How To Use Start -->

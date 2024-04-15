@@ -54,7 +54,7 @@
                                                 </select>
                                                 <label for="tacgia">Tên tác giả</label>
                                                 <div class="mt-2">
-                                                    <a href="<?=ACT_ADMIN?>publishing-add" class="me-3 pe-2">&rarr; Thêm tác giả mới</a>
+                                                    <a href="<?=ACT_ADMIN?>author-add" class="me-3 pe-2">&rarr; Thêm tác giả mới</a>
                                                 </div>
                                             </div>
                                             <div class="col-6 form-floating mb-2 p-0 px-3">
@@ -74,7 +74,7 @@
                                                 </select>
                                                 <label for="nhaxb">Nhà xuất bản</label>
                                                 <div class="mt-2">
-                                                    <a href="#" class="me-3 pe-2">&rarr; Thêm NXB mới</a>
+                                                    <a href="<?=ACT_ADMIN?>publishing-add" class="me-3 pe-2">&rarr; Thêm NXB mới</a>
                                                 </div>
                                             </div>
                                             <div class="col-12 form-floating p-0 px-3">

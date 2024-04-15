@@ -21,6 +21,10 @@ function editStatus($nameStatus,$token,$status,$date){
     $sql = "UPDATE bill SET ".$nameStatus."=".$status.", ".$date."=current_timestamp() WHERE token='".$token."'";
     pdo_execute($sql);
 }
+function editQuantity($idProduct,$quantity){
+    $sql = "UPDATE products SET quantity = quantity-".$quantity." WHERE id = ".$idProduct;
+    pdo_execute($sql);
+}
 function addFeedback($idUser,$idBillDetail){
     $sql = "INSERT INTO feedback(idUser,idBillDetail,status) values('$idUser','$idBillDetail',1)";
     pdo_execute($sql);

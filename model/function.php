@@ -118,6 +118,19 @@ function getOneField($table,$field,$status){
 }
 
 /**
+ * Hàm này để lấy một field từ $table và điều kiện $status
+ * @param $table bảng cần thực thi
+ * @param $field(CHAR) field cần lấy, muốn lấy nhiều thì thêm dấu phẩy, ví dụ: "id,name"
+ * @param $condition ĐIỀU KIỆN để lấy [SQL: after 'WHERE']
+ */
+function getOneFieldByCondition($table,$field,$condition){
+    $sql = "SELECT ".$field."
+    FROM ".$table." WHERE ".$condition;
+    $result = pdo_query_one($sql);
+    return $result;
+}
+
+/**
  * Cập nhật trạng thái theo ID
  * @param $table tên bảng cần update
  * @param $id ID cần update

@@ -4,6 +4,20 @@ $total = 0;
 if(!empty($_SESSION['user'])) $cart = getAllByIdUser('cart',$_SESSION['user']['id'],1);
 else $cart = [];
 
+// [MUA NGAY]
+if(isset($_GET['addnow'])){
+    if(empty($_SESSION['user'])){ // nếu CHƯA ĐĂNG NHẬP (GUEST)
+        $check = checkCart($_GET['id']);
+        if($check == -1) $_SESSION['cart'][] = ['id' => $_GET['id'],'quantity' => $_GET['quantity']]; // nếu không trùng ID-> thêm SP vào CART
+        else  $_SESSION['cart'][$check]['quantity']++; // nếu trùng ID-> thêm số lượng (+1) vào ID đã trùng
+    }else{ // nếu ĐÃ ĐĂNG NHẬP (USER)
+        $check = checkCartByID($_GET['id']);
+        if(empty($check)) addCart($_SESSION['user']['id'],$_GET['id'],$_GET['quantity']);
+        else updateQuantity($check,'quantity+1');
+    }
+    // di chuyển ROUTE 
+    if($_GET['addnow'] == 1) header('Location:'.ACT.'gio-hang');
+}
 // [XÓA 1 SP TRONG CART]
 if(isset($_GET['delete']) && !empty($_GET['delete'])) {
     if(empty($_SESSION['user'])){

@@ -85,7 +85,19 @@
     </div>
     <!-- Feature End -->
 
-    <!-- Deal Start -->
+
+    <?php
+    $getProductSpecial = getOneFieldByCondition('products','*','special = 1 AND status = 1');
+    if(!empty($getProductSpecial)) {
+        extract($getProductSpecial);
+        extract(getOneFieldByID('Author','name nameAuthor',$idAuthor,1));
+        extract(getOneFieldByID('Publishing','name namePublishing',$idPublishing,1));
+        if($priceSale){
+            $priceGoc = $price;
+            $price = $priceSale;
+        }
+    ?>
+    <!-- Special Product Start -->
     <div class="container-fluid deal bg-primary my-5 py-5">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
@@ -95,25 +107,31 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <div class="bg-white text-center p-4">
                         <div class="border p-4">
-                            <p class="mb-2">Nhà xuất bản DÂN TRÍ</p>
-                            <h2 class="fw-bold text-uppercase mb-4">Thiền sư và em bé 5 tuổi</h2>
-                            <h1 class="display-4 text-primary mb-4"><?=number_format(130000)?> đ</h1>
-                            <h5>Số lượng còn: 30 quyển</h5>
+                            <p class="mb-2"><?=$namePublishing?></p>
+                            <h2 class="fw-bold text-uppercase mb-4"><?=$name?></h2>
+                            <?php if(isset($priceGoc)) echo '<h5 class="text-danger"><del>'.number_format($priceGoc).' đ</del></h5>' ?>
+                            <h1 class="display-4 text-primary mb-4"><?=number_format($price)?> đ</h1>
+                            <h5>Số lượng còn: <?=$quantity?> quyển</h5>
                             <p class="mb-4">Tác giả: Thích Nhất Hạnh</p>
                             <div class="text-danger text-start"><i>Thời gian KM còn:</i></div>
                             <div class="row g-0 mb-4 bg-dark text-light rounded-3 p-2 fs-5">
                                 <span id="time"></span>
                             </div>
-                            <a class="btn btn-primary py-2 px-4" href="">Mua ngay</a>
+                            <?php 
+                            if($quantity) echo  '<a class="btn btn-primary py-2 px-4" href="'.ACT.'gio-hang&addnow=1&id='.$id.'&quantity=1">Mua ngay</a>';
+                            else echo           '<a disabaled class="btn btn-primary py-2 px-4" href="#">Hết hàng</a>';
+                            ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Deal End -->
+    <!-- Special Product End -->
+    <?php } ?>
 
-    <!-- Product Start -->
+    <!-- ???? -->
+   
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-start wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -154,7 +172,7 @@
             </div>
         </div>
     </div>
-    <!-- Product End -->
+    <!-- ???? End -->
 
 
 

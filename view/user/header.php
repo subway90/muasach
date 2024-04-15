@@ -1,3 +1,4 @@
+<?php require_once '../../controller/user/case/app.php'?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +35,23 @@
     <link href="<?=URL?>/assets/css/style.css" rel="stylesheet">
 </head>
 
-<body class='position-relative'>
+<!-- [MENU ICON] Start -->
+<div style="height: 50%; z-index:3" class="position-fixed end-0 ps-4 ps-lg-0 top-50 col-3 col-md-3 col-lg-1">
+        <span class="w-100 p-0">
+            <a class="btn btn-lg btn-primary btn-lg-square mx-auto" href="<?=ACT.$arrayURL[0]?>/<?php if(isset($_SESSION['background']) && !empty($_SESSION['background'])) echo'mode-light'; else echo'mode-dark'?>" >
+                <i class="<?php if(isset($_SESSION['background']) && !empty($_SESSION['background'])) echo'text-light'; else echo'text-dark'?> fas fa-adjust"></i>
+            </a>
+        </span>
+        <span class="w-100 ps-1">
+            <button class="btn btn-lg btn-danger btn-lg-square mx-auto animated pulse infinite" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <i class="fas fa-comment-dots"></i>
+            </button>
+        </span>
+    </div>
+</div>
+<!-- [MENU ICON] End -->
+
+<body <?php if(isset($_SESSION['background']) && !empty($_SESSION['background'])) echo $_SESSION['background']?> class='position-relative'>
     <!-- Spinner Start -->
     <!-- <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -102,3 +119,14 @@
 
     <!-- Alert Start -->
     <?php show_alert_2()?>
+    <!-- [MESSAGER] Start -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Nhắn tin</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body text-dark">
+            Chức năng đang phát triển
+        </div>
+    </div>
+    <!-- [MESSAGER] End -->

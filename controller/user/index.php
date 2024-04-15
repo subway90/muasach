@@ -97,11 +97,6 @@ if(isset($_GET['act'])){
                 $title = '&#9760; BUG &#9760;';
                 require_once 'case/test.php';
                 break;
-            case "view-modal-bill":
-                $title='Thanh toán';
-                include "../../view/user/header.php";
-                include "../../view/user/bill.php";
-                break;
             default:
                 $title = "404 NOT FOUND";
                 include "../../view/user/header.php";

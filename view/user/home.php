@@ -38,45 +38,45 @@
             <div class="row g-4">
                 <div class="col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="feature-item position-relative bg-primary text-center p-3">
-                        <div class="border py-5 px-3">
+                        <div class="border py-3 px-3">
                             <i class="fas fa-truck fa-3x mb-4 text-muted"></i>
-                            <h5  class="text-white mb-0 fs-6">
+                            <h6  class="text-white mb-0">
                                 <div class=" animated pulse infinite">Miễn phí giao hàng</div>
                                 <div class="small text-dark mt-lg-2">với đơn từ 200K</div>
-                            </h5>
+                            </h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="feature-item position-relative bg-primary text-center p-3">
-                        <div class="border py-5 px-3">
+                        <div class="border py-3 px-3">
                             <i class="fas fa-sync-alt fa-3x mb-4 text-muted"></i>
-                            <h5 class="text-white mb-0 fs-6">
+                            <h6 class="text-white mb-0">
                                 <div class=" animated pulse infinite">Miễn phí đổi, trả</div>
                                 <div class="small text-dark mt-lg-2">trong 30 ngày</div>
-                            </h5>
+                            </h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="feature-item position-relative bg-primary text-center p-3">
-                        <div class="border py-5 px-3">
+                        <div class="border py-3 px-3">
                             <i class="fas fa-check-square fa-3x mb-4 text-muted"></i>
-                            <h5 class="text-white mb-0 fs-6">
+                            <h6 class="text-white mb-0">
                                 <div class=" animated pulse infinite">Chất lượng cao</div>
                                 <div class="small text-dark mt-lg-2">Hàng nhập có nguồn gốc</div>
-                            </h5>
+                            </h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="feature-item position-relative bg-primary text-center p-3">
-                        <div class="border py-5 px-3">
+                        <div class="border py-3 px-3">
                             <i class="fas fa-phone fa-3x mb-4 text-muted"></i>
-                            <h5 class="text-white mb-0 fs-6">
+                            <h6 class="text-white mb-0">
                                 <div class=" animated pulse infinite">Hỗ trợ 24/7</div>
                                 <div class="small text-dark mt-lg-2">Hotline: 0979 651 651</div>
-                            </h5>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
     </div>
     <!-- Feature End -->
 
-
+    <!-- Special Product Start -->
     <?php
     $getProductSpecial = getOneFieldByCondition('products','*','special = 1 AND status = 1');
     if(!empty($getProductSpecial)) {
@@ -97,7 +97,6 @@
             $price = $priceSale;
         }
     ?>
-    <!-- Special Product Start -->
     <div class="container-fluid deal bg-primary my-5 py-5">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
@@ -127,10 +126,10 @@
             </div>
         </div>
     </div>
-    <!-- Special Product End -->
     <?php } ?>
-
-    <!-- ???? -->
+    <!-- Special Product End -->
+    
+    <!-- Product News Start-->
    
     <div class="container-fluid py-5">
         <div class="container">
@@ -140,9 +139,9 @@
             </div>
             <div class="row">
                <?php
-               $list = danh_sach_san_pham_noi_bat();
-               for ($i=0; $i < count($list); $i++) { 
-                $san_pham = $list[$i];
+               $listProductNews = getProductNews(4);
+               for ($i=0; $i < count($listProductNews); $i++) { 
+                $san_pham = $listProductNews[$i];
                 extract($san_pham);
                 ?>
                  <div class="img-hide col-6 col-md-4 col-lg-3 py-2 wow fadeIn" data-wow-delay="0.1s">
@@ -172,7 +171,7 @@
             </div>
         </div>
     </div>
-    <!-- ???? End -->
+    <!-- Product News End -->
 
 
 

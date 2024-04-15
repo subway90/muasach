@@ -1,6 +1,9 @@
 <?php
-function danh_sach_san_pham_noi_bat(){
-    $sql = "select * from products WHERE status = 1 order by id asc";
+/**
+ * @param int $limit giới hạn sản phẩm
+ */
+function getProductNews($limit){
+    $sql = "SELECT * FROM products WHERE status = 1 order by dateCreate asc LIMIT ".$limit;
     $list = pdo_query($sql);
     return $list;
 }

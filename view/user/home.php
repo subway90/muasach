@@ -281,167 +281,97 @@
     <!-- [EVENT] End -->
 
 
-    <!-- How To Use Start -->
-    <div class="container-fluid how-to-use bg-primary my-5 py-5">
-        <div class="container text-white py-5">
+    <!-- [NEWSLETTER] Start -->
+    <div class="container-fluid newsletter bg-primary py-5 my-5">
+        <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-white mb-3"><span class="fw-light text-dark">How To Use Our</span> Natural & Organic
-                    <span class="fw-light text-dark">Hair Shampoo</span></h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+                <h1 class="text-white mb-3"><span class="fs-4 text-muted">Đăng kí nhận</span> Tin Tức Khuyến Mãi</h1>
+                <p class="text-white mb-4">Đảm bảo việc tin tức Chất lượng, không SPAM để quý khách</p>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4 text-center wow fadeIn" data-wow-delay="0.1s">
-                    <div class="btn-square rounded-circle border mx-auto mb-4" style="width: 120px; height: 120px;">
-                        <i class="fa fa-home fa-3x text-dark"></i>
+            <div class="row justify-content-center">
+                <div class="col-md-7 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="position-relative w-100 mt-3 mb-2">
+                    <form action="" method="post">
+                        <input class="form-control w-100 py-4 ps-4 pe-5" type="text" placeholder="Nhập email của bạn" style="height: 48px;">
+                        <button  onclick="alert('Đang bảo trì')" type="submit" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2">
+                            <i class="fa fa-paper-plane text-white fs-4"></i>
+                        </button>
+                    </form>
                     </div>
-                    <h5 class="text-white">Wash Hair With Water</h5>
-                    <hr class="w-25 bg-light my-2 mx-auto">
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</span>
-                </div>
-                <div class="col-lg-4 text-center wow fadeIn" data-wow-delay="0.3s">
-                    <div class="btn-square rounded-circle border mx-auto mb-4" style="width: 120px; height: 120px;">
-                        <i class="fa fa-home fa-3x text-dark"></i>
-                    </div>
-                    <h5 class="text-white">Apply Shampoo On Hair</h5>
-                    <hr class="w-25 bg-light my-2 mx-auto">
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</span>
-                </div>
-                <div class="col-lg-4 text-center wow fadeIn" data-wow-delay="0.5s">
-                    <div class="btn-square rounded-circle border mx-auto mb-4" style="width: 120px; height: 120px;">
-                        <i class="fa fa-home fa-3x text-dark"></i>
-                    </div>
-                    <h5 class="text-white">Wait 5 Mins And Wash</h5>
-                    <hr class="w-25 bg-light my-2 mx-auto">
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</span>
                 </div>
             </div>
         </div>
     </div>
-    <!-- How To Use End -->
+    <!-- [NEWSLETTER] End -->
 
+    <!-- [BLOG] Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-primary mb-3"><span class="fw-semi text-dark">Bài viết liên quan</h1>
+                <p class="mb-5">Cập nhật thông tin, tin tức sự kiện, chương trình khuyến mãi.</p>
+            </div>
+            <div class="row g-4">
 
-    
-    <!-- Testimonial Start -->
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="blog-item border h-100 p-4">
+                        <img class="img-fluid mb-4" src="img/blog-1.jpg" alt="">
+                        <a href="" class="h5 lh-base d-inline-block">chương trình Mừng Khai Giảng, ngàn Ưu đãi</a>
+                        <div class="d-flex text-black-50 mb-2">
+                            <div class="pe-3">
+                                <small class="fa fa-eye me-1"></small>
+                                <small>1,255</small>
+                            </div>
+                            <div class="pe-3">
+                                <small class="fa fa-comments me-1"></small>
+                                <small>12</small>
+                            </div>
+                        </div>
+                        <p class="mb-4">
+                            Chương trình bắt đầu từ 12/08/2023 đến hết 20/08/2023, tặng mã voucher 50%, bộ dụng cụ học tập...
+                        </p>
+                        <a href="" class="btn border-1 btn-outline-primary px-3">Đọc tiếp</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- [BLOG] End -->
+
+    <!-- [FEEDBACK] Start -->
     <div class="container-fluid testimonial bg-primary my-5 py-5">
         <div class="container text-white py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-white mb-3">Our Customer Said <span class="fw-light text-dark">About Our Natural Shampoo</span></h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+                <h1 class="text-white mb-3">Bình luận từ khách hàng</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.1s">
                         <div class="testimonial-item text-center" data-dot="1">
-                            <img class="img-fluid border p-2" src="img/testimonial-1.jpg" alt="">
-                            <h5 class="fw-light lh-base text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus. Praesent tristique odio ut rutrum pellentesque. Fusce eget molestie est, at rutrum est. Nullam scelerisque libero nunc, vitae ullamcorper elit volutpat ut.</h5>
-                            <h5 class="mb-1">Client Name</h5>
-                            <h6 class="fw-light text-white fst-italic mb-0">Profession</h6>
+                            <img class="img-fluid border p-2" src="<?=URL?>/uploads/user/avatar/user_default.jpg" alt="">
+                            <h5 class="fw-semi lh-base text-white">Cửa hàng cung cấp đủ các loại sách, tôi rất hài lòng khi mua ở đây.</h5>
+                            <h5 class="mb-1">Lê Bá Loan</h5>
+                            <h6 class="fw-light text-white fst-italic mb-0">Khách hàng <span class="fw-bold text-dark">VIP 1</span></h6>
                         </div>
                         <div class="testimonial-item text-center" data-dot="2">
-                            <img class="img-fluid border p-2" src="img/testimonial-2.jpg" alt="">
-                            <h5 class="fw-light lh-base text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus. Praesent tristique odio ut rutrum pellentesque. Fusce eget molestie est, at rutrum est. Nullam scelerisque libero nunc, vitae ullamcorper elit volutpat ut.</h5>
-                            <h5 class="mb-1">Client Name</h5>
-                            <h6 class="fw-light text-white fst-italic mb-0">Profession</h6>
+                            <img class="img-fluid border p-2" src="<?=URL?>/uploads/user/avatar/user_default.jpg" alt="">
+                            <h5 class="fw-semi lh-base text-white">Ngoài bán sách ra còn có cả bán dụng cụ học tập, thật tuyệt vời.</h5>
+                            <h5 class="mb-1">Minh Nguyệt Đặng</h5>
+                            <h6 class="fw-light text-white fst-italic mb-0">Khách hàng <span class="fw-bold text-danger">VIP 5</span></h6>
                         </div>
                         <div class="testimonial-item text-center" data-dot="3">
-                            <img class="img-fluid border p-2" src="img/testimonial-3.jpg" alt="">
-                            <h5 class="fw-light lh-base text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus. Praesent tristique odio ut rutrum pellentesque. Fusce eget molestie est, at rutrum est. Nullam scelerisque libero nunc, vitae ullamcorper elit volutpat ut.</h5>
-                            <h5 class="mb-1">Client Name</h5>
-                            <h6 class="fw-light text-white fst-italic mb-0">Profession</h6>
+                            <img class="img-fluid border p-2" src="<?=URL?>/uploads/user/avatar/user_default.jpg" alt="">
+                            <h5 class="fw-semi lh-base text-white">Tôi yêu muasach.net bởi vì ở đây có muôn vàn cuốn sách để lựa chọn, thật tuyệt vời.</h5>
+                            <h5 class="mb-1">Chi Nguyễn</h5>
+                            <h6 class="fw-light text-white fst-italic mb-0">Khách hàng <span class="fw-bold text-danger">VIP 4</span></h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Testimonial End -->
+    <!-- [FEEDBACK] End -->
 
 
-    <!-- Blog Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-primary mb-3"><span class="fw-light text-dark">From Our</span> Blog Articles</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="blog-item border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/blog-1.jpg" alt="">
-                        <a href="" class="h5 lh-base d-inline-block">Foods that are good for your hair growing</a>
-                        <div class="d-flex text-black-50 mb-2">
-                            <div class="pe-3">
-                                <small class="fa fa-eye me-1"></small>
-                                <small>9999 Views</small>
-                            </div>
-                            <div class="pe-3">
-                                <small class="fa fa-comments me-1"></small>
-                                <small>9999 Comments</small>
-                            </div>
-                        </div>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</p>
-                        <a href="" class="btn btn-outline-primary px-3">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="blog-item border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/blog-2.jpg" alt="">
-                        <a href="" class="h5 lh-base d-inline-block">How to take care of hair naturally</a>
-                        <div class="d-flex text-black-50 mb-2">
-                            <div class="pe-3">
-                                <small class="fa fa-eye me-1"></small>
-                                <small>9999 Views</small>
-                            </div>
-                            <div class="pe-3">
-                                <small class="fa fa-comments me-1"></small>
-                                <small>9999 Comments</small>
-                            </div>
-                        </div>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</p>
-                        <a href="" class="btn btn-outline-primary px-3">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="blog-item border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/blog-3.jpg" alt="">
-                        <a href="" class="h5 lh-base d-inline-block">How to use our natural & organic shampoo</a>
-                        <div class="d-flex text-black-50 mb-2">
-                            <div class="pe-3">
-                                <small class="fa fa-eye me-1"></small>
-                                <small>9999 Views</small>
-                            </div>
-                            <div class="pe-3">
-                                <small class="fa fa-comments me-1"></small>
-                                <small>9999 Comments</small>
-                            </div>
-                        </div>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</p>
-                        <a href="" class="btn btn-outline-primary px-3">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog End -->
 
-
-    <!-- Newsletter Start -->
-    <div class="container-fluid newsletter bg-primary py-5 my-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-white mb-3"><span class="fw-light text-dark">Let's Subscribe</span> The Newsletter</h1>
-                <p class="text-white mb-4">Subscribe now to get 30% discount on any of our products</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-7 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="position-relative w-100 mt-3 mb-2">
-                        <input class="form-control w-100 py-4 ps-4 pe-5" type="text" placeholder="Enter Your Email"
-                            style="height: 48px;">
-                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                class="fa fa-paper-plane text-white fs-4"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter End -->

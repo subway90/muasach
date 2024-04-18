@@ -16,7 +16,7 @@ function getAllProduct(){
 function addProduct($tensp,$slug,$ngayxuatban,$giasp,$giasale,$soluong,$motasp,$filename,$iddm,$idnxb,$idtg){
     $sql = "INSERT INTO products(name,slug,price,priceSale,quantity,datePublish,image,decribe,status,idCategory,idPublishing,idAuthor) values('$tensp','$slug','$giasp','$giasale','$soluong','$ngayxuatban','$filename','$motasp',1,'$iddm','$idnxb','$idtg')";
     pdo_execute($sql);
-    $_SESSION['alert']= "Tạo sản phẩm thành công !";
+    addAlert('success','<i class="fas fa-check-circle"></i> Tạo sản phẩm thành công !');
     header("Location:".ACT_ADMIN."product");
 };
 

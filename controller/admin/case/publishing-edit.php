@@ -1,6 +1,6 @@
 <?php
 require_once "../../view/admin/header.php";
-show_alert($_SESSION['alert']);
+
 $arr_error = [];
 if(isset($_GET['id']) && !empty($_GET['id'])){
     if(isset($_POST['name'])){

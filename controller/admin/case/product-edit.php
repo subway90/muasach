@@ -66,7 +66,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){ // nếu có GET id
             }
             if($point_valid==7){
                 editProduct($name,$slug,$datePublish,$price,$priceSale,$quantity,$decribe,$hinhcu,$idCategory,$idPublishing,$idAuthor,$id);
-                $_SESSION['alert']= "Sửa sản phẩm thành công !";
+                addAlert('success','<i class="fas fa-check-circle"></i> Sửa sản phẩm thành công !');
                 header("Location:".ACT_ADMIN."product-edit&id=".$id);
             }
         }

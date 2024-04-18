@@ -11,13 +11,13 @@
 function addPublishing($name,$status){
     $sql = "INSERT INTO publishing(name,status,dateCreate) values('$name',$status,current_timestamp())";
     pdo_execute($sql);
-    $_SESSION['alert']= "Thêm nhà xuất bản mới thành công !";
+    addAlert('success','<i class="fas fa-check-circle"></i> Thêm nhà xuất bản mới thành công !');
     header("Location:".ACT_ADMIN."publishing");
 }
 function editPublishing($id,$name,$status){
     $sql = "UPDATE publishing SET name = '".$name."',status =".$status." WHERE id = ".$id;
     pdo_query($sql);
-    $_SESSION['alert']= "Sửa NXB thành công !";
+    addAlert('success','<i class="fas fa-check-circle"></i> Sửa NXB thành công !');
     header("Location:".ACT_ADMIN."publishing-edit&id=".$id);
 
 }

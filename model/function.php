@@ -308,17 +308,22 @@ function formatTime($input,$format){
     }else return 'Thời gian nhập vào chưa đúng form YYYY-MM-DD hh:mm:ss';
 }
 
-
+/**
+ * Hàm dùng để tạo ALERT 3
+ * @param string $type Loại background ALERT (danger,success,warning,... - Bootstrap 5)
+ * @param string $message Tin nhắn cần thông báo
+ */
 function addAlert($type,$message) {
     $_SESSION['alert_3'][0] = $type;
     $_SESSION['alert_3'][1] = $message;
 }
+
 /**
  * Hàm dùng để SHOW Alert 3
  */
 function showAlert(){
     if(!empty($_SESSION['alert_3'])) {
-    return '
+    echo '
     <style>
     .line-bar {
         height: 2px;

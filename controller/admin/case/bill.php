@@ -22,7 +22,7 @@ if(isset($_GET['edit']) && !empty($_GET['edit']) && isset($_GET['token']) && !em
         $nameStatus = 'statusPay';$date='dateUpdate';
     }
     editStatus($nameStatus,$_GET['token'],$_GET['stt'],$date);
-    $_SESSION['alert'] = "Thay đổi trạng thái thành công";
+    addAlert('success','<i class="fas fa-check-circle"></i> Thay đổi trạng thái thành công !');
     header('Location:'.ACT_ADMIN.'bill');
 }
 require_once '../../view/admin/bill.php';

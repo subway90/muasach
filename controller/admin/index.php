@@ -2,9 +2,12 @@
 # [FILE CONFIG]
 require_once "../../config/URL.php";
 require_once "../../config/APP.php";
+require_once "../../model/function.php";
+
 # [FUNCTION]
 session_start();
 ob_start();
+show_alert();
 
 # [SESSION]
 if(!isset($_SESSION['alert'])) $_SESSION['alert'] = [];
@@ -18,7 +21,6 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
 }else{
     # [FILE MODEL]
     require_once "../../model/pdo.php";
-    require_once "../../model/function.php";
     require_once "../../model/admin/product.php";
     require_once "../../model/admin/category.php";
     require_once "../../model/admin/publishing.php";

@@ -44,8 +44,8 @@
                                             </div>
                                             <div class="col-6 form-floating mb-2 p-0 px-3">
                                                 <select name="trangthai" class="form-select rounded rounded-5" id="tacgia" aria-label="ttg">
-                                                    <option <?php if($trangthai == 1) echo('selected') ?> value="1">Hiện</option>
-                                                    <option <?php if($trangthai == 2) echo('selected') ?> value="2">Ẩn</option>
+                                                    <option <?php if($trangthai == 1) echo'selected' ?> value="1">Hiện</option>
+                                                    <option <?php if($trangthai == 2) echo'selected' ?> value="2">Ẩn</option>
                                                 </select>
                                                 <label for="tacgia">Trạng thái</label>
                                             </div>

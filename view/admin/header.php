@@ -1,8 +1,3 @@
-<!-- [SHOW ALERT] -->
-<?php 
-show_alert(); 
-addAlert('danger','Hiển thị không thành công !');
-?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-scompiler-id="0">
 <head>

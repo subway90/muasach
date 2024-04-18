@@ -11,13 +11,13 @@
 function addAuthor($name,$status){
     $sql = "INSERT INTO author(name,status,dateCreate) values('$name',$status,current_timestamp())";
     pdo_execute($sql);
-    $_SESSION['alert']= "Thêm tác giả mới thành công !";
+    addAlert('success','<i class="fas fa-check-circle"></i> Thêm tác giả mới thành công !');
     header("Location:".ACT_ADMIN."author");
 }
 function editAuthor($id,$name,$status){
     $sql = "UPDATE author SET name = '".$name."',status =".$status." WHERE id = ".$id;
     pdo_query($sql);
-    $_SESSION['alert']= "Sửa tác giả thành công !";
+    addAlert('success','<i class="fas fa-check-circle"></i> Sửa tác giả thành công ! !');
     header("Location:".ACT_ADMIN."author-edit&id=".$id);
 
 }

@@ -1,3 +1,16 @@
+<?php if($previewBill === true) {?>
+<div class="container deal bg-primary py-5 d-flex justify-content-center">
+    <div class="col-12 col-md-12 col-lg-4 py-5 ">
+        <label for="token">Nhập mã TOKEN</label>
+        <form method="post">
+            <div class="input-group">
+                <input type="text" name="token" id="token" class="form-control" value="<?=$token?>">
+                <button type="submit" class="btn btn-outline-light">Tìm kiếm</button>
+            </div>
+        </form>
+    </div>
+</div>
+<?php }else{?>
 <div class="container my-5 wow fadeIn">
     <nav class="mb-2" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-sa-simple">
@@ -69,3 +82,4 @@
         </div>
     </div>
 </div>
+<?php }?>

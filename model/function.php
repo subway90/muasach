@@ -128,8 +128,7 @@ function getAllFieldByCustom($table,$field,$custom){
  * @param string $custom Điều kiện cần lấy [SQL: after WHERE]
  */
 function getOneFieldByCustom($table,$field,$custom){
-    $sql = "SELECT ".$field."
-    FROM ".$table." WHERE ".$custom;
+    $sql = "SELECT ".$field." FROM ".$table." WHERE ".$custom;
     $result = pdo_query_one($sql);
     return $result;
 }
@@ -140,19 +139,6 @@ function getOneField($table,$field,$status){
     if($status==0) $status = "1";
     $sql = "SELECT ".$field."
     FROM ".$table." WHERE ".$status;
-    $result = pdo_query_one($sql);
-    return $result;
-}
-
-/**
- * Hàm này để lấy một field từ $table và điều kiện $status
- * @param $table bảng cần thực thi
- * @param $field(CHAR) field cần lấy, muốn lấy nhiều thì thêm dấu phẩy, ví dụ: "id,name"
- * @param $condition ĐIỀU KIỆN để lấy [SQL: after 'WHERE']
- */
-function getOneFieldByCondition($table,$field,$condition){
-    $sql = "SELECT ".$field."
-    FROM ".$table." WHERE ".$condition;
     $result = pdo_query_one($sql);
     return $result;
 }
@@ -368,7 +354,7 @@ function showAlert(){
         }
       }      
     </style>
-    <div class="position-fixed end-0 me-1 mt-5 pt-5">
+    <div style="z-index: 3" class="position-fixed end-0 me-1 mt-5 pt-5">
         <div class="w-100 alert alert-'.$_SESSION['alert_3'][0].' border-0 alert-dismissible fade show m-0 rounded-0" role="alert">
             <span class="">'.$_SESSION['alert_3'][1].'</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

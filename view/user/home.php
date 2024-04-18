@@ -87,7 +87,7 @@
 
     <!-- Special Product Start -->
     <?php
-    $getProductSpecial = getOneFieldByCondition('products','*','special = 1 AND status = 1');
+    $getProductSpecial = getOneFieldByCustom('products','*','special = 1 AND status = 1');
     if(!empty($getProductSpecial)) {
         extract($getProductSpecial);
         extract(getOneFieldByID('author','name nameAuthor',$idAuthor,0));

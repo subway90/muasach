@@ -44,7 +44,7 @@
                             </td>
                             <td class="align-middle border-0"><?=number_format($price*$quantity)?> đ</td>
                             <td class="align-middle border-0">
-                                <a class="btn border-1 btn-sm btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$i+1?>"><i class="fas fa-trash-alt"></i></a>
+                                <a class="btn border-1 btn-sm btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$idCart+1?>"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     <?php }}?>

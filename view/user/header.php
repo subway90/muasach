@@ -117,6 +117,7 @@
                         <?php }else{ ?>
                             <a href="#" class="nav-link text-dark dropdown-toggle m-0" data-bs-toggle="dropdown">Tài khoản</a>
                             <div class="dropdown-menu bg-primary-subtle mt-2">
+                                <a href="<?=ACT?>lich-su-mua-hang" class="dropdown-item py-2">Tra cứu đơn hàng</a>
                                 <a href="<?=ACT?>dang-nhap" class="dropdown-item py-2">Đăng nhập</a>
                                 <a href="<?=ACT?>dang-ky" class="dropdown-item py-2">Đăng ký</a>
                             <?php } ?>

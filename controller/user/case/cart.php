@@ -5,7 +5,7 @@ $total = 0;
 if(!empty($_SESSION['user'])) $cart = getAllByIdUser('cart',$_SESSION['user']['id'],0);
 else $cart = [];
 
-// [MUA NGAY]
+# [MUA NGAY]
 if(isset($_GET['addnow'])){
     if(empty($_SESSION['user'])){ // nếu CHƯA ĐĂNG NHẬP (GUEST)
         $check = checkCart($_GET['id']);
@@ -19,24 +19,27 @@ if(isset($_GET['addnow'])){
     // di chuyển ROUTE 
     if($_GET['addnow'] == 1) header('Location:'.ACT.'gio-hang');
 }
-// [XÓA 1 SP TRONG CART]
+
+# [XÓA 1 SP TRONG CART]
 if(isset($_GET['delete']) && !empty($_GET['delete'])) {
-    if(empty($_SESSION['user'])){
-        --$_GET['delete'];
-        array_splice($_SESSION['cart'],$_GET['delete'],1);
-        header("Location:".ACT."gio-hang");
-    }else deleteCart($_GET['delete']);
+    --$_GET['delete'];
+    if(empty($_SESSION['user'])) array_splice($_SESSION['cart'],$_GET['delete'],1);
+    else deleteCart($_GET['delete']);
     header("Location:".ACT."gio-hang");
 }
 
-// [XÓA TẤT CẢ SP TRONG CART]
+# [XÓA TẤT CẢ SP TRONG CART]
 if(isset($_GET['close'])){
     if(empty($_SESSION['user'])) unset($_SESSION['cart']); //nếu chưa đăng nhập -> hủy SESSION CART
     else deleteAllCart($_SESSION['user']['id']); //nếu đã đăng nhập -> thực thi SQL Delete dữ liệu
-    header("Location:".ACT."gio-hang");
+    if($_GET['close']=='done'){
+        addAlert('success','Đơn hàng đã được tạo thành công, vui lòng chờ xác nhận !');
+        header("Location:".ACT."lich-su-mua-hang/".$token);
+    }
+    else header("Location:".ACT."gio-hang");
 }
 
-// [THÊM SỐ LƯỢNG SP]
+# [THÊM SỐ LƯỢNG SP]
 if(isset($_POST['quantity']) && !empty($_POST['quantity'])){
         //Nếu chưa đăng nhập -> Sửa ở SESSION
         if(empty($_SESSION['user'])) $_SESSION['cart'][$_POST['idCart']]['quantity'] = $_POST['quantity'];
@@ -45,7 +48,7 @@ if(isset($_POST['quantity']) && !empty($_POST['quantity'])){
         header("Location:".ACT."gio-hang");
 }
 
-// [TOTAL]
+# [TOTAL]
 if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
     if(!empty($_SESSION['cart'])){ //Nếu CART có SP
         for ($i=0; $i < count($_SESSION['cart']); $i++) {
@@ -72,7 +75,7 @@ if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
     }
 }
 
-// [THÔNG TIN THANH TOÁN]
+# [THÔNG TIN THANH TOÁN]
 if(!empty($_SESSION['user'])){ // nếu đã đăng nhập -> load thông tin có sẵn từ USER
     $user = getOneByID('accounts',$_SESSION['user']['id'],0);
     extract($user);
@@ -82,7 +85,7 @@ if(!empty($_SESSION['user'])){ // nếu đã đăng nhập -> load thông tin c�
     $fullName = "";$phone = "";$email = ""; $address = "";$mess = "";$pay=1;
 }
 
-// [THANH TOÁN]
+# [THANH TOÁN]
 $point_valid=0;
 if(isset($_REQUEST['thanhtoan']) && $total !=0){
     
@@ -124,7 +127,6 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
                 if($priceSale != 0) $price = $priceSale;
                 addBillDetail($token,$cart[$i]['idProduct'],$price,$cart[$i]['quantity']); //thêm hóa đơn chi tiết vào Database
             }
-        $_SESSION['alert'] = "Tạo hóa đơn thành công !";
         }else{ //nếu chưa ĐĂNG NHẬP
             $token = createTokenChar(10);
             addBill($token,2,0,$total,$fullName,$phone,$email,$address,$pay); //thêm hóa đơn vào Database
@@ -134,9 +136,10 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
                 if($priceSale != 0) $price = $priceSale;
                 addBillDetail($token,$_SESSION['cart'][$i]['id'],$price,$_SESSION['cart'][$i]['quantity']); //thêm hóa đơn chi tiết vào Database
             }
-            $_SESSION['alert'] = "Tạo hóa đơn thành công !";
+            
         }
-        header("Location:".ACT."gio-hang&close");
+        
+        header("Location:".ACT."gio-hang&close=done");
     }
 }
 

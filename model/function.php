@@ -307,3 +307,47 @@ function formatTime($input,$format){
         return str_replace(['hh','mm','ss','YYYY','MM','DD'],[$arr_day[0],$arr_day[1],$arr_day[2],$arr_time[0],$arr_time[1],$arr_time[2]],$format);
     }else return 'Thời gian nhập vào chưa đúng form YYYY-MM-DD hh:mm:ss';
 }
+
+
+function addAlert($type,$message) {
+    $_SESSION['alert_3'][0] = $type;
+    $_SESSION['alert_3'][1] = $message;
+}
+/**
+ * Hàm dùng để SHOW Alert 3
+ */
+function showAlert(){
+    if(!empty($_SESSION['alert_3'])) {
+    return '
+    <style>
+    .line-bar {
+        height: 2px;
+        animation: lmao '.(TIME_CLOSE_ALERT/1000).'s linear forwards;
+    }
+    @keyframes lmao {
+        from {
+          width: 100%;
+        }
+        to {
+          width: 0;
+        }
+      }      
+    </style>
+    <div style="margin-top: 5rem">
+        <div class="position-fixed end-0 me-1">
+            <div class="w-100 alert alert-'.$_SESSION['alert_3'][0].' alert-dismissible fade show m-0 rounded-0" role="alert">
+                <span class="">'.$_SESSION['alert_3'][1].'</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="bg-'.$_SESSION['alert_3'][0].' line-bar"></div>
+        </div>
+    </div>
+    <script>
+        function closeAlert() {
+            document.querySelector(".btn-close").click();
+        }
+        setTimeout(closeAlert,'.TIME_CLOSE_ALERT.')
+    </script>';
+    }
+    $_SESSION['alert_3'] = [];
+}

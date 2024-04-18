@@ -1,18 +1,22 @@
 <?php
-    require_once "../../config/URL.php";
-    require_once "../../config/APP.php";
+# [FILE CONFIG]
+require_once "../../config/URL.php";
+require_once "../../config/APP.php";
+# [FUNCTION]
 session_start();
 ob_start();
-// echo '<pre>';
-// print_r($_SERVER);
-// echo '</pre>'; exit;
+
+# [SESSION]
 if(!isset($_SESSION['alert'])) $_SESSION['alert'] = [];
+
+# [Authorization]
 if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
     require_once "../../view/header.php";
     require_once "../../view/404.php";
     require_once "../../view/footer.php";
     exit;
 }else{
+    # [FILE MODEL]
     require_once "../../model/pdo.php";
     require_once "../../model/function.php";
     require_once "../../model/admin/product.php";

@@ -40,6 +40,7 @@ if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 if(!isset($_SESSION['alert'])) $_SESSION['alert'] = "";
 if(!isset($_SESSION['alert_2'])) $_SESSION['alert_2'] = "";
+if(!isset($_SESSION['alert_3'])) $_SESSION['alert_3'] = [];
 
 # [CASE]
 if(isset($_GET['act'])){

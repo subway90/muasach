@@ -1,6 +1,7 @@
 <!-- [SHOW ALERT] -->
-<?php
-show_alert($_SESSION['alert']);
+<?php 
+show_alert(); 
+addAlert('danger','Hiển thị không thành công !');
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-scompiler-id="0">
@@ -178,3 +179,6 @@ show_alert($_SESSION['alert']);
                 </div>
                 <div class="sa-toolbar__shadow"></div>
             </div>
+
+<!-- function show alert -->
+<?=showAlert()?>

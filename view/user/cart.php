@@ -26,10 +26,13 @@
                             if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
                                 if(!empty($_SESSION['cart'])){ //Nếu CART có SP
                                     for ($i=0; $i < count($_SESSION['cart']); $i++) {
-                                        $product = getOneFieldByID('products','image,name,quantity quantityMax,price,priceSale',$_SESSION['cart'][$i]['id'],'1');// select SP theo ID
-                                        extract($_SESSION['cart'][$i]);
-                                        extract($product);
-                                        if($priceSale!=0) $price = $priceSale;
+                                        $product = getOneFieldByID('products','image,name,quantity quantityMax,price,priceSale',$_SESSION['cart'][$i]['id'],1);// select SP theo ID
+                                        if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
+                                        else{
+                                            extract($_SESSION['cart'][$i]);
+                                            extract($product);
+                                            if($priceSale!=0) $price = $priceSale;
+                                        }
                         ?>
                         <tr>
                             <td colspan="3" class="align-middle"><img src="<?=URL?>/uploads/product/<?=$image?>" alt="ẢNH SP ID:" style="width: 50px;"></td>
@@ -66,10 +69,13 @@
                         <?php }else{
                                 for ($i=0; $i < count($cart); $i++) { 
                                     $product = getOneFieldByID('products','image,name,price,priceSale,quantity quantityMax',$cart[$i]['idProduct'],1);
-                                    extract($product);
-                                    extract($cart[$i]);
-                                    if($priceSale!=0) $price = $priceSale;
-                                    $max = getOneFieldByID('products','quantity',$idProduct,0);
+                                    if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
+                                    else{
+                                        extract($product);
+                                        extract($cart[$i]);
+                                        if($priceSale!=0) $price = $priceSale;
+                                        $max = getOneFieldByID('products','quantity',$idProduct,0);
+                                    }
                         ?>
                         <tr>
                             <td colspan="3" class="align-middle">
@@ -135,11 +141,14 @@
                     <h5 class="card-title mt-3">Giỏ hàng</h5>
                     <?php
                     if($total!=0){
-                        if(empty($_SESSION['user'])){
+                        if(empty($_SESSION['user'])){ //Chưa đăng nhập
                             for ($i=0; $i < count($_SESSION['cart']); $i++) {
                                 $result = getOneByID('products',$_SESSION['cart'][$i]['id'],1);
-                                extract($result);
-                                if($priceSale != 0) $price = $priceSale;
+                                if(empty($result)) continue; //Nếu SP không tồn tại (status = 2)
+                                else {
+                                    extract($result);
+                                    if($priceSale != 0) $price = $priceSale;
+                                }
                         ?>
                         <div class="d-flex mb-2">
                             <div class="col-9 text-start"><?=$name?></div>
@@ -149,8 +158,11 @@
                         }else{
                             for ($i=0; $i < count($cart); $i++) {
                                 $result = getOneByID('products',$cart[$i]['idProduct'],1);
-                                extract($result);
-                                if($priceSale != 0) $price = $priceSale;
+                                if(empty($result)) continue; //Nếu SP không tồn tại (status = 2)
+                                else {
+                                    extract($result);
+                                    if($priceSale != 0) $price = $priceSale;
+                                }
                     ?>
                     <div class="d-flex">
                         <div class="col-9 text-start"><?=$name?></div>

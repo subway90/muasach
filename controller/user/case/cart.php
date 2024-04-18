@@ -1,7 +1,7 @@
 <?php
 $total = 0;
 //Nếu đã ĐĂNG NHẬP -> gọi CART trong Database và truyền dữ liệu vào mảng $cart
-if(!empty($_SESSION['user'])) $cart = getAllByIdUser('cart',$_SESSION['user']['id'],1);
+if(!empty($_SESSION['user'])) $cart = getAllByIdUser('cart',$_SESSION['user']['id'],0);
 else $cart = [];
 
 // [MUA NGAY]
@@ -48,19 +48,25 @@ if(isset($_POST['quantity']) && !empty($_POST['quantity'])){
 if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
     if(!empty($_SESSION['cart'])){ //Nếu CART có SP
         for ($i=0; $i < count($_SESSION['cart']); $i++) {
-            $product = getOneByID('products',$_SESSION['cart'][$i]['id'],'1') ;// select SP theo ID
-            extract($product);
-            if($priceSale==0) $total+=$price*$_SESSION['cart'][$i]['quantity'];
-            else $total+=$priceSale*$_SESSION['cart'][$i]['quantity'];
+            $product = getOneByID('products',$_SESSION['cart'][$i]['id'],1) ;// select SP theo ID
+            if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
+            else {
+                extract($product);
+                if($priceSale==0) $total+=$price*$_SESSION['cart'][$i]['quantity'];
+                else $total+=$priceSale*$_SESSION['cart'][$i]['quantity'];
+            }
         }
     }
 }else{ // Trường hợp: Đã đăng nhập (USER)
     if(!empty($cart)){
         for ($i=0; $i < count($cart); $i++) { 
             $product = getOneByID('products',$cart[$i]['idProduct'],1);
-            extract($product);
-            if($priceSale==0) $total+=($price*$cart[$i]['quantity']);
-            else $total+=$priceSale*$cart[$i]['quantity'];
+            if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
+            else {
+                extract($product);
+                if($priceSale==0) $total+=$price*$cart[$i]['quantity'];
+                else $total+=$priceSale*$cart[$i]['quantity'];
+            }
         }
     }
 }
@@ -69,8 +75,9 @@ if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
 if(!empty($_SESSION['user'])){ // nếu đã đăng nhập -> load thông tin có sẵn từ USER
     $user = getOneByID('accounts',$_SESSION['user']['id'],0);
     extract($user);
-    $mess = "";$pay=1;
-}else{
+    $mess = "";
+    $pay=1;
+}else{ //nếu chưa đăng nhập
     $fullName = "";$phone = "";$email = ""; $address = "";$mess = "";$pay=1;
 }
 

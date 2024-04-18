@@ -90,8 +90,8 @@
     $getProductSpecial = getOneFieldByCondition('products','*','special = 1 AND status = 1');
     if(!empty($getProductSpecial)) {
         extract($getProductSpecial);
-        extract(getOneFieldByID('Author','name nameAuthor',$idAuthor,1));
-        extract(getOneFieldByID('Publishing','name namePublishing',$idPublishing,1));
+        extract(getOneFieldByID('author','name nameAuthor',$idAuthor,0));
+        extract(getOneFieldByID('publishing','name namePublishing',$idPublishing,0));
         if($priceSale){
             $priceGoc = $price;
             $price = $priceSale;

@@ -90,6 +90,7 @@ function getAllByIdUser($table,$idUser,$status){
     $sql = "SELECT * FROM ".$table." WHERE idUser = ".$idUser." AND ".$status;
     $list = pdo_query($sql);
     return $list;
+    var_dump($list); exit;
 }
 /**
  * Hàm này để lấy một field từ $table và điều kiện $status

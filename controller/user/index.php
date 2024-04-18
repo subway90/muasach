@@ -36,6 +36,7 @@ $arr_error = [];
 $activeModal = 'pay';
 $countProductInCart = showCart(1);
 $listCart = showCart(2);
+$total = showCart(3);
 
 # [SESSION]
 if(!isset($_SESSION['user'])) $_SESSION['user'] = [];

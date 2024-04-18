@@ -1,9 +1,4 @@
 <?php
-$total = 0;
-
-//Nếu đã ĐĂNG NHẬP -> gọi CART trong Database và truyền dữ liệu vào mảng $cart
-if(!empty($_SESSION['user'])) $cart = getAllByIdUser('cart',$_SESSION['user']['id'],0);
-else $cart = [];
 
 # [MUA NGAY]
 if(isset($_GET['addnow'])){
@@ -48,32 +43,6 @@ if(isset($_POST['quantity']) && !empty($_POST['quantity'])){
         header("Location:".ACT."gio-hang");
 }
 
-# [TOTAL]
-if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
-    if(!empty($_SESSION['cart'])){ //Nếu CART có SP
-        for ($i=0; $i < count($_SESSION['cart']); $i++) {
-            $product = getOneByID('products',$_SESSION['cart'][$i]['id'],1) ;// select SP theo ID
-            if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
-            else {
-                extract($product);
-                if($priceSale==0) $total+=$price*$_SESSION['cart'][$i]['quantity'];
-                else $total+=$priceSale*$_SESSION['cart'][$i]['quantity'];
-            }
-        }
-    }
-}else{ // Trường hợp: Đã đăng nhập (USER)
-    if(!empty($cart)){
-        for ($i=0; $i < count($cart); $i++) { 
-            $product = getOneByID('products',$cart[$i]['idProduct'],1);
-            if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
-            else {
-                extract($product);
-                if($priceSale==0) $total+=$price*$cart[$i]['quantity'];
-                else $total+=$priceSale*$cart[$i]['quantity'];
-            }
-        }
-    }
-}
 
 # [THÔNG TIN THANH TOÁN]
 if(!empty($_SESSION['user'])){ // nếu đã đăng nhập -> load thông tin có sẵn từ USER
@@ -118,27 +87,18 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
 
     if($point_valid < 3) $activeModal = 'onload'; //Load lại PAY-MODAL ở CART
     else{
-        if(!empty($_SESSION['user'])){ //nếu đã ĐĂNG NHẬP
-            $token = createTokenChar(10);
-            addBill($token,$total,$_SESSION['user']['id'],$total,$fullName,$phone,$email,$address,$pay); //thêm hóa đơn vào Database
-            for($i=0; $i < count($cart); $i++){ //thêm hóa đơn chi tiết
-                $product = getOneFieldByID('products','price,priceSale',$cart[$i]['idProduct'],1);
-                extract($product);
-                if($priceSale != 0) $price = $priceSale;
-                addBillDetail($token,$cart[$i]['idProduct'],$price,$cart[$i]['quantity']); //thêm hóa đơn chi tiết vào Database
-            }
-        }else{ //nếu chưa ĐĂNG NHẬP
-            $token = createTokenChar(10);
-            addBill($token,2,0,$total,$fullName,$phone,$email,$address,$pay); //thêm hóa đơn vào Database
-            for($i=0; $i < count($_SESSION['cart']); $i++){ //thêm hóa đơn chi tiết
-                $product = getOneFieldByID('products','price,priceSale',$_SESSION['cart'][$i]['id'],1);
-                extract($product);
-                if($priceSale != 0) $price = $priceSale;
-                addBillDetail($token,$_SESSION['cart'][$i]['id'],$price,$_SESSION['cart'][$i]['quantity']); //thêm hóa đơn chi tiết vào Database
-            }
-            
+        #tạo mã TOKEN
+        $token = createTokenChar(10);
+        # xác định ID & typeBill
+        if(!empty($_SESSION['user'])) $idUser = $_SESSION['user']['id'];
+        else $idUser = 0;
+        #tạo HÓA ĐƠN
+        addBill($token,$idUser,$total,$fullName,$phone,$email,$address,$pay);
+        #tạo HÓA ĐƠN CHI TIẾT
+        for($i=0; $i < count($listCart); $i++){ //thêm hóa đơn chi tiết
+            extract($listCart[$i]);
+            addBillDetail($token,$idProduct,$priceSale,$quantity); 
         }
-        
         header("Location:".ACT."gio-hang&close=done");
     }
 }

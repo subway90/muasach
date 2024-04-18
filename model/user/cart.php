@@ -30,6 +30,7 @@ function deleteAllCart($input){
 
 function showCart($type) {
     $countProInCart = 0;
+    $totalCart = 0;
     $listCart = [];
     if(!empty($_SESSION['user'])) { //Trường hợp ĐÃ ĐĂNG NHẬP
         $listIdProInCart = getAllFieldByCustom('cart','id idCart, idProduct, quantity','idUser = '.$_SESSION['user']['id']);
@@ -39,7 +40,12 @@ function showCart($type) {
                 $getProduct = getOneFieldByCustom('products','name,image,price,priceSale,quantity quantityMax','id = '.$idProduct.' AND status = 1');
                 if(!empty($getProduct)) {
                     extract($getProduct);
+                    # SỐ LƯỢNG
                     $countProInCart++;
+                    # TỔNG TIỀN
+                    if(!empty($priceSale)) $totalCart+=$quantity*$priceSale;
+                    else $totalCart+=$quantity*$price;
+                    # DATA
                     $listCart[] = ['idCart' => $idCart,'quantity'=>$quantity,'idProduct' => $idProduct,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantityMax];
                 }
             }
@@ -52,7 +58,12 @@ function showCart($type) {
                 $getProduct = getOneFieldByCustom('products','name,image,price,priceSale,quantity quantityMax','id = '.$id.' AND status = 1');
                 if(!empty($getProduct)) {
                     extract($getProduct);
+                    # SỐ LƯỢNG
                     $countProInCart++;
+                    #TỔNG TIỀN
+                    if(!empty($priceSale)) $totalCart+=$quantity*$priceSale;
+                    else $totalCart+=$quantity*$price;
+                    # DATA
                     $listCart[] = ['idCart' => $i,'quantity'=>$quantity,'idProduct' => $id,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantityMax];
                 }
             }
@@ -61,5 +72,6 @@ function showCart($type) {
     
     if($type ==1) return $countProInCart;
     elseif($type ==2) return $listCart;
+    elseif($type ==3) return $totalCart;
     else return alert("Lỗi function showCart /LINE 31/ model/user/cart.php");
 }

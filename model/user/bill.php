@@ -1,7 +1,7 @@
 <?php
-function addBill($token,$typeBill,$idUser,$total,$fullName,$phone,$email,$address,$typePay){
-    $sql = "INSERT INTO bill(token,typeBill,idUser,total,fullName,phone,email,address,typePay,statusPay,statusDelivery,datePay,dateDelivery,dateCreate,status) 
-    values('$token','$typeBill','$idUser','$total','$fullName','$phone','$email','$address','$typePay',1,1,'','',current_timestamp(),1)";
+function addBill($token,$idUser,$total,$fullName,$phone,$email,$address,$typePay){
+    $sql = "INSERT INTO bill(token,idUser,total,fullName,phone,email,address,typePay,statusPay,statusDelivery,datePay,dateDelivery,dateCreate,status) 
+    values('$token','$idUser','$total','$fullName','$phone','$email','$address','$typePay',1,1,'','',current_timestamp(),1)";
     // var_dump($sql.'<br>');
     pdo_execute($sql);
 }

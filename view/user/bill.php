@@ -20,8 +20,11 @@
                         if(!empty($_SESSION['cart'])){ //Nếu CART có SP
                             for ($i=0; $i < count($_SESSION['cart']); $i++) {
                                 $product = getOneByID('products',$_SESSION['cart'][$i]['id'],'1') ;// select SP theo ID
-                                extract($product);
-                                if($priceSale!=0) $price = $priceSale;
+                                if(empty($product)) continue;
+                                else {
+                                    extract($product);
+                                    if($priceSale!=0) $price = $priceSale;
+                                }
                 ?>
                     <tr>
                         <td colspan="3" class="align-middle">
@@ -67,9 +70,12 @@
                             }else{
                                 for ($i=0; $i < count($cart); $i++) { 
                                     $product = getOneByID('products',$cart[$i]['idProduct'],1);
-                                    extract($product);
-                                    extract($cart[$i]);
-                                    if($priceSale!==0) $price = $priceSale;
+                                    if(empty($product)) continue;
+                                    else {
+                                        extract($product);
+                                        extract($cart[$i]);
+                                        if($priceSale!==0) $price = $priceSale;
+                                    }
                                 ?>
                     <tr>
                         <td colspan="3" class="align-middle">

@@ -1,5 +1,6 @@
 <?php
 $total = 0;
+
 //Nếu đã ĐĂNG NHẬP -> gọi CART trong Database và truyền dữ liệu vào mảng $cart
 if(!empty($_SESSION['user'])) $cart = getAllByIdUser('cart',$_SESSION['user']['id'],0);
 else $cart = [];

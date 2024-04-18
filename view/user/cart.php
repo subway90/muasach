@@ -16,94 +16,42 @@
                         <tr>
                             <th class="text-start ps-4" colspan="4">Sản phẩm</th>
                             <th>Giá</th>
-                            <th>Số lượng</th>
+                            <th class="text-start">Số lượng</th>
                             <th>Thành tiền</th>
                             <th>Xóa</th>
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-                        <?php
-                            if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
-                                if(!empty($total)){ //Nếu CART có SP
-                                    for ($i=0; $i < count($_SESSION['cart']); $i++) {
-                                        $product = getOneFieldByID('products','image,name,quantity quantityMax,price,priceSale',$_SESSION['cart'][$i]['id'],1);// select SP theo ID
-                                        if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
-                                        else{
-                                            extract($_SESSION['cart'][$i]);
-                                            extract($product);
-                                            if($priceSale!=0) $price = $priceSale;
-                                        }
-                        ?>
+                    <?php 
+                    if(!empty($listCart)) {
+                        for ($i=0; $i < count($listCart); $i++) {
+                            extract($listCart[$i]);
+                            if(!empty($priceSale)) $price = $priceSale;
+                    ?>
                         <tr>
-                            <td colspan="3" class="align-middle"><img src="<?=URL?>/uploads/product/<?=$image?>" alt="ẢNH SP ID:" style="width: 50px;"></td>
-                            <td class="align-middle"><div class="text-start h6"><?=$name?></div></td>
-                            <td class="align-middle"><?=number_format($price)?> đ</td>
-                            <td class="align-middle">
+                            <td colspan="3" class="align-middle border-0"><img src="<?=URL?>/uploads/product/<?=$image?>" alt="ẢNH SP ID:" style="width: 50px;"></td>
+                            <td class="align-middle border-0"><div class="text-start h6"><?=$name?></div></td>
+                            <td class="align-middle border-0"><?=number_format($price)?> đ</td>
+                            <td class="align-middle border-0 ">
                                 <form method="post">
-                                <div class="input-group ms-lg-5">
+                                <div class="input-group ">
                                     <button name="quantity" value="<?=$quantity-1?>" class="btn btn-sm btn-primary <?php if($quantity==1) echo'disabled'?>">-</button>
-                                    <input type="hidden" name="idCart" value="<?=$i?>">
-                                    <span class="btn btn-sm btn-outline-primary"><?=$_SESSION['cart'][$i]['quantity']?></span>
-                                    <button name="quantity" value="<?=$quantity+1?>"  class="btn btn-sm btn-primary <?php if($quantity==$quantityMax) echo'disabled'?>">+</button>
-                                </div>
-                                </form>
-                            </td>
-                            <td><?=number_format($price*$_SESSION['cart'][$i]['quantity'])?> đ</td>
-                            <td class="align-middle">
-                                <a class="btn border-1 btn-sm btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$i+1?>"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <?php 
-                                    }
-                                }
-                            }else{  //Trường hợp: Đã đăng nhập (USER)
-                                if(!empty($total)){ //NẾU CÓ SP TRONG CART
-                                for ($i=0; $i < count($cart); $i++) { 
-                                    $product = getOneFieldByID('products','image,name,price,priceSale,quantity quantityMax',$cart[$i]['idProduct'],1);
-                                    if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
-                                    else{
-                                        extract($product);
-                                        extract($cart[$i]);
-                                        if($priceSale!=0) $price = $priceSale;
-                                        $max = getOneFieldByID('products','quantity',$idProduct,0);
-                                    }
-                        ?>
-                        <tr>
-                            <td colspan="3" class="align-middle">
-                                <img src="<?=URL?>/uploads/product/<?=$image?>" alt="ẢNH SP ID:" style="width: 50px;">
-                            </td>
-                            <td class="align-middle">
-                                <div class="text-start h6"><?=$name?></div>
-                            </td>
-                            <td class="align-middle">
-                                <?=$price?>
-                            </td>
-                            <td class="align-middle text-center">
-                                <form method="post">
-                                <div class="input-group ms-lg-5">
-                                    <button name="quantity" value="<?=$quantity-1?>" class="btn btn-sm btn-primary <?php if($quantity==1) echo'disabled'?>">-</button>
-                                    <input type="hidden" name="idCart" value="<?=$id?>">
+                                    <input type="hidden" name="idCart" value="<?=$idCart?>">
                                     <span class="btn btn-sm btn-outline-primary"><?=$quantity?></span>
                                     <button name="quantity" value="<?=$quantity+1?>"  class="btn btn-sm btn-primary <?php if($quantity==$quantityMax) echo'disabled'?>">+</button>
                                 </div>
                                 </form>
                             </td>
-                            <td class="align-middle">
-                                <?=number_format($price*$quantity)?> đ
-                            </td>
-                            <td class="align-middle">
-                                <a class="btn btn-sm border-1 btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$cart[$i]['id']?>"><i class="fas fa-trash-alt"></i></a>
+                            <td class="align-middle border-0"><?=number_format($price*$quantity)?> đ</td>
+                            <td class="align-middle border-0">
+                                <a class="btn border-1 btn-sm btn-outline-danger" href="<?=ACT?>gio-hang&delete=<?=$i+1?>"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
-                        <?php
-                                    }
-                                }
-                            } ?>
-                    </tbody>
+                    <?php }}?>
                     <tfoot>
                         <tr class='align-middle'>
                             <td colspan="8">
-                    <?php if(!empty($total)){ ?><a href="#" class="float-end btn border-1 btn-sm btn-outline-danger me-lg-2" data-bs-toggle="modal" data-bs-target="#delcart"><i class="fas fa-trash-alt"></i> tất cả</a>
+                    <?php if(!empty($total)){ ?><a href="#" class="float-end btn border-1 btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delcart"><i class="fas fa-trash-alt"></i> tất cả</a>
                     <?php }else{?>Chưa có sản phẩm nào. <a href="<?=ACT?>san-pham" class="text-primary">&rarr; Mua sản phẩm</a><?php } ?>
                             </td>
                         </tr>
@@ -115,14 +63,14 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="delcartLabel">Xóa tất cả sản phẩm trong GIỎ HÀNG</h1>
+                            <h1 class="modal-title fs-5 fw-semi" id="delcartLabel">Xóa tất cả sản phẩm</h1>
                         </div>
                         <div class="modal-body">
                             Bạn chắc chắn chứ, sẽ không khôi phục sau khi xóa !
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                            <a href="<?=ACT?>gio-hang&close" class="btn btn-primary">Chắc chắn</a>
+                            <button type="button" class="btn border-1 btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            <a href="<?=ACT?>gio-hang&close" class="btn border-1 btn-outline-primary">Chắc chắn</a>
                         </div>
                         </div>
                     </div>

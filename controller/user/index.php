@@ -33,7 +33,8 @@ $listFB = getAllByIdUser('feedback',$_SESSION['user']['id'],1);
     }
 }
 $activeModal = 'pay';
-$countProductInCart = showCart();
+$countProductInCart = showCart(1);
+$listCart = showCart(2);
 
 # [SESSION]
 if(!isset($_SESSION['user'])) $_SESSION['user'] = [];

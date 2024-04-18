@@ -28,22 +28,38 @@ function deleteAllCart($input){
     pdo_execute($sql);
 }
 
-function showCart() {
+function showCart($type) {
     $countProInCart = 0;
-    if(!empty($_SESSION['user'])) { //Trường hợp đã đăng nhập
-        $listIdProInCart = getAllFieldByCustom('cart','idProduct','idUser = '.$_SESSION['user']['id']);
-        for ($i=0; $i < count($listIdProInCart); $i++) { 
-            extract($listIdProInCart[$i]);
-            if(!empty(getOneFieldByCustom('products','id','id = '.$idProduct.' AND status = 1'))) $countProInCart++;
-        }
-        
-    }else{ //Trường hợp chưa đăng nhập
-        if(!empty($_SESSION['cart'])) {
-            for ($i=0; $i < count($_SESSION['cart']); $i++) { 
-                extract($_SESSION['cart'][$i]);
-                if(!empty(getOneFieldByCustom('products','id','id = '.$id.' AND status = 1'))) $countProInCart++;
+    $listCart = [];
+    if(!empty($_SESSION['user'])) { //Trường hợp ĐÃ ĐĂNG NHẬP
+        $listIdProInCart = getAllFieldByCustom('cart','id idCart, idProduct, quantity','idUser = '.$_SESSION['user']['id']);
+        if(!empty($listIdProInCart)) {
+            for ($i=0; $i < count($listIdProInCart); $i++) { 
+                extract($listIdProInCart[$i]);
+                $getProduct = getOneFieldByCustom('products','name,image,price,priceSale,quantity quantityMax','id = '.$idProduct.' AND status = 1');
+                if(!empty($getProduct)) {
+                    extract($getProduct);
+                    $countProInCart++;
+                    $listCart[] = ['idCart' => $idCart,'quantity'=>$quantity,'idProduct' => $idProduct,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantityMax];
+                }
             }
         }
     }
-    return $countProInCart;
+    else { //Trường hợp CHƯA ĐĂNG NHẬP
+        if(!empty($_SESSION['cart'])) {
+            for ($i=0; $i < count($_SESSION['cart']); $i++) { 
+                extract($_SESSION['cart'][$i]);
+                $getProduct = getOneFieldByCustom('products','name,image,price,priceSale,quantity quantityMax','id = '.$id.' AND status = 1');
+                if(!empty($getProduct)) {
+                    extract($getProduct);
+                    $countProInCart++;
+                    $listCart[] = ['idCart' => $i,'quantity'=>$quantity,'idProduct' => $id,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantityMax];
+                }
+            }
+        }
+    }
+    
+    if($type ==1) return $countProInCart;
+    elseif($type ==2) return $listCart;
+    else return alert("Lỗi function showCart /LINE 31/ model/user/cart.php");
 }

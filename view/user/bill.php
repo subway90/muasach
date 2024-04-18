@@ -16,15 +16,9 @@
                 </thead>
                 <tbody class="align-middle">
                 <?php
-                    if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
-                        if(!empty($_SESSION['cart'])){ //Nếu CART có SP
-                            for ($i=0; $i < count($_SESSION['cart']); $i++) {
-                                $product = getOneByID('products',$_SESSION['cart'][$i]['id'],'1') ;// select SP theo ID
-                                if(empty($product)) continue;
-                                else {
-                                    extract($product);
-                                    if($priceSale!=0) $price = $priceSale;
-                                }
+                    for ($i=0; $i < count($listCart); $i++) { 
+                        extract($listCart[$i]);
+                        if(!empty($priceSale)) $price = $priceSale;
                 ?>
                     <tr>
                         <td colspan="3" class="align-middle">
@@ -43,73 +37,18 @@
                             <?=number_format($_SESSION['cart'][$i]['quantity']*$price)?>
                         </td>
                     </tr>
-                    <tfoot>
-                        <tr>
-                            <td colspan="7" class="align-middle text-end">
-                                <div class="w-100">
-                                    <span class="h6 me-2">TỔNG TIỀN</span>
-                                    <?=number_format($total)?> đ
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
-                    <?php 
-                                }
-                            }else{ ?>
-                    <tr>
-                        <td colspan="9" class="align-middle">Chưa có sản phẩm</td>
-                    </tr>
-                    <?php
-                            }
-                        }else{  //Trường hợp: Đã đăng nhập (USER)
-                            if(empty($cart)){ ?>
-                    <tr>
-                        <td colspan="9" class="align-middle">Chưa có sản phẩm</td>
-                    </tr>
-                    <?php
-                            }else{
-                                for ($i=0; $i < count($cart); $i++) { 
-                                    $product = getOneByID('products',$cart[$i]['idProduct'],1);
-                                    if(empty($product)) continue;
-                                    else {
-                                        extract($product);
-                                        extract($cart[$i]);
-                                        if($priceSale!==0) $price = $priceSale;
-                                    }
-                                ?>
-                    <tr>
-                        <td colspan="3" class="align-middle">
-                            <img src="<?=URL?>/uploads/product/<?=$image?>" alt="ẢNH SP ID:" style="width: 50px;">
-                        </td>
-                        <td class="align-middle">
-                            <div class="h6 text-start"><?=$name?></div>
-                        </td>
-                        <td class="align-middle">
-                            <?=number_format($price)?>
-                        </td>
-                        <td class="align-middle">
-                            <?=$quantity?>
-                        </td>
-                        <td class="align-middle text-end">
-                            <?=number_format($quantity*$price)?>
-                        </td>
-                    </tr>
-                    <?php } ?>
-                    <tfoot>
-                        <tr>
-                            <td colspan="7" class="align-middle text-end">
-                                <div class="w-100">
-                                    <span class="h6 me-2">TỔNG TIỀN</span>
-                                    <?=number_format($total)?> đ
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
-                    <?php
-                            }
-                        } ?>
-                    
                 </tbody>
+                <?php }?>
+                <tfoot>
+                    <tr>
+                        <td colspan="7" class="align-middle text-end">
+                            <div class="w-100">
+                                <span class="h6 me-2">TỔNG TIỀN</span>
+                                <?=number_format($total)?> đ
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
 
@@ -118,8 +57,8 @@
         <div class="h4 py-2 text-primary text-center">Thông tin giao hàng</div>
         <?php if(empty($_SESSION['user'])){ ?>
             <!-- CẢNH BÁO CHƯA ĐĂNG NHẬP -->
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <span class="mb-4">nếu bạn <span class="text-primary fw-bold">ĐĂNG NHẬP</span> thì sẽ được <span class="text-success fw-bold">lưu lịch sử mua hàng</span> & <span class="text-danger fw-bold">tích điểm</span> ! <a href="<?=ACT?>login" class="text-primay">&rarr; Đăng nhập</a></span>
+            <div class="alert alert-warning alert-dismissible fade show border-0" role="alert">
+                <span class="mb-4">nếu bạn <span class="text-primary fw-bold">ĐĂNG NHẬP</span> thì sẽ được <span class="text-success fw-bold">lưu lịch sử mua hàng</span> & <span class="text-danger fw-bold">tích điểm</span> ! <a href="<?=ACT?>dang-nhap" class="text-primay">&rarr; Đăng nhập</a></span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php }?>

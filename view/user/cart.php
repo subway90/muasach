@@ -10,7 +10,7 @@
             </nav>
         </div>
         <div class="row my-5">
-            <div class="col-lg-8 table-responsive mb-5">
+            <div class="col-lg-8 p-0 pe-lg-2 table-responsive mb-5">
                 <table class="table table-light table-border border-3 table-striped text-center mb-0">
                     <thead class="thead-dark">
                         <tr>
@@ -77,62 +77,62 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card border-0">
-                <div class="card-body p-0">
-                    <h5 class="card-title mt-3">Giỏ hàng</h5>
-                    <?php
-                    if($total!=0){
-                        if(empty($_SESSION['user'])){ //Chưa đăng nhập
-                            for ($i=0; $i < count($_SESSION['cart']); $i++) {
-                                $result = getOneByID('products',$_SESSION['cart'][$i]['id'],1);
-                                if(empty($result)) continue; //Nếu SP không tồn tại (status = 2)
-                                else {
-                                    extract($result);
-                                    if($priceSale != 0) $price = $priceSale;
-                                }
+            <div class="col-lg-4 p-0">
+                <div class="card border-0 bg-light text-dark">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">Giỏ hàng</h5>
+                        <?php
+                        if($total!=0){
+                            if(empty($_SESSION['user'])){ //Chưa đăng nhập
+                                for ($i=0; $i < count($_SESSION['cart']); $i++) {
+                                    $result = getOneByID('products',$_SESSION['cart'][$i]['id'],1);
+                                    if(empty($result)) continue; //Nếu SP không tồn tại (status = 2)
+                                    else {
+                                        extract($result);
+                                        if($priceSale != 0) $price = $priceSale;
+                                    }
+                            ?>
+                            <div class="d-flex mb-2">
+                                <div class="col-9 text-start"><?=$name?></div>
+                                <div class="col-3 text-end"><?=number_format($price*$_SESSION['cart'][$i]['quantity'])?> đ</div>
+                            </div>
+                            <?php }
+                            }else{
+                                for ($i=0; $i < count($cart); $i++) {
+                                    $result = getOneByID('products',$cart[$i]['idProduct'],1);
+                                    if(empty($result)) continue; //Nếu SP không tồn tại (status = 2)
+                                    else {
+                                        extract($result);
+                                        if($priceSale != 0) $price = $priceSale;
+                                    }
                         ?>
-                        <div class="d-flex mb-2">
+                        <div class="d-flex">
                             <div class="col-9 text-start"><?=$name?></div>
-                            <div class="col-3 text-end"><?=number_format($price*$_SESSION['cart'][$i]['quantity'])?> đ</div>
+                            <div class="col-3 text-end"><?=number_format($price*$cart[$i]['quantity'])?> đ</div>
                         </div>
-                        <?php }
-                        }else{
-                            for ($i=0; $i < count($cart); $i++) {
-                                $result = getOneByID('products',$cart[$i]['idProduct'],1);
-                                if(empty($result)) continue; //Nếu SP không tồn tại (status = 2)
-                                else {
-                                    extract($result);
-                                    if($priceSale != 0) $price = $priceSale;
-                                }
-                    ?>
-                    <div class="d-flex">
-                        <div class="col-9 text-start"><?=$name?></div>
-                        <div class="col-3 text-end"><?=number_format($price*$cart[$i]['quantity'])?> đ</div>
-                    </div>
-                    <?php   } 
+                        <?php   } 
+                            }
+                        }else{ ?>
+                        <div class="d-flex">
+                            <div class="col-12 text-center">Chưa có sản phẩm</div>
+                        </div>
+                        <?php 
                         }
-                    }else{ ?>
-                    <div class="d-flex">
-                        <div class="col-12 text-center">Chưa có sản phẩm</div>
+                        if($total!=0){ ?>
+                        <h5 class="card-title mt-3">Tổng thanh toán</h5>
+                        <div class="d-flex">
+                            <div class="col-6 text-start">Sản phẩm</div>
+                            <div class="col-6 text-end"><?=number_format($total)?> đ</div>
+                        </div>
+                        <hr class="border border-primary">
+                        <div class="text-end text-primary fs-5 fw-bold">
+                            <?=number_format($total)?> đ
+                        </div>
+                        <div class="text-center mt-2">
+                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#<?=$activeModal?>">Thanh toán</button>
+                        </div>
+                        <?php }?>
                     </div>
-                    <?php 
-                    }
-                    if($total!=0){ ?>
-                    <h5 class="card-title mt-3">Tổng thanh toán</h5>
-                    <div class="d-flex">
-                        <div class="col-6 text-start">Sản phẩm</div>
-                        <div class="col-6 text-end"><?=number_format($total)?> đ</div>
-                    </div>
-                    <hr class="border border-primary">
-                    <div class="text-end text-primary fs-5 fw-bold">
-                        <?=number_format($total)?> đ
-                    </div>
-                    <div class="text-center mt-2">
-                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#<?=$activeModal?>">Thanh toán</button>
-                    </div>
-                    <?php }?>
-                </div>
                 </div>
             </div>
         </div>

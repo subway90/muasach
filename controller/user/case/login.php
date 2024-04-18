@@ -1,14 +1,20 @@
 <?php
 if(empty($_SESSION['user'])){
+    # BIẾN KHỞI TẠO
     $subURL = "";
+    $remember = "";
     $username = "";
+    # GHI NHỚ TÀI KHOẢN
+    if(isset($_POST['rememberUser'])) $remember = "checked";
+    # ĐƯỜNG DẪN PHỤ
     if(isset($_GET['addCart'])) $subURL .= '&addCart';
+    # ĐĂNG NHẬP
     if(isset($_POST['user']) && isset($_POST['password'])){
         $username = $_POST['user'];
         $password = $_POST['password'];
         if(!empty($username)) {
             if(!empty($password)) {
-                $result = dang_nhap(str_replace(['"',"'"],'',$_POST['user']),md5($_POST['password']));
+                $result = login(str_replace(['"',"'"],'',$_POST['user']),md5($_POST['password']));
                 if(!empty($result)){
                     #Data
                     $_SESSION['user'] = $result;
@@ -23,6 +29,11 @@ if(empty($_SESSION['user'])){
                             }
                             unset($_SESSION['cart']);
                         }
+                    }
+                    # Cookie users
+                    if(!empty($remember)) {
+                        setcookie('username',str_replace(['"',"'"],'',$_POST['user']),time()+86400*365);
+                        setcookie('password',md5($_POST['password']),time()+86400*365);
                     }
                     #Authorization
                     if($_SESSION['user']['role'] == 1){

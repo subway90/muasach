@@ -14,10 +14,20 @@ include "../../model/user/cart.php";
 include "../../model/user/bill.php";
 include "../../model/user/notifycation.php";
 
-# [FUNCTION START]
+# [FUNCTION]
 ob_start(); 
 session_start();
 show_alert();
+
+# [SESSION]
+if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
+if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+if(!isset($_SESSION['alert'])) $_SESSION['alert'] = "";
+if(!isset($_SESSION['alert_2'])) $_SESSION['alert_2'] = "";
+if(!isset($_SESSION['alert_3'])) $_SESSION['alert_3'] = [];
+
+# [COOKIE]
+if(isset($_COOKIE['username']) && !empty($_COOKIE['username']) && isset($_COOKIE['password']) && !empty($_COOKIE['password'])) autoLogin($_COOKIE['username'],$_COOKIE['password']);
 
 # [VARIBLE START]
 if(!empty($_SESSION['user'])){
@@ -37,13 +47,6 @@ $activeModal = 'pay';
 $countProductInCart = showCart(1);
 $listCart = showCart(2);
 $total = showCart(3);
-
-# [SESSION]
-if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
-if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
-if(!isset($_SESSION['alert'])) $_SESSION['alert'] = "";
-if(!isset($_SESSION['alert_2'])) $_SESSION['alert_2'] = "";
-if(!isset($_SESSION['alert_3'])) $_SESSION['alert_3'] = [];
 
 # [CASE]
 if(isset($_GET['act'])){
@@ -115,5 +118,5 @@ if(isset($_GET['act'])){
     include "../../view/user/header.php";
     include "../../view/user/home.php";
 }
-# [LAYOUT] footer
+# [LAYOUT]
 include "../../view/user/footer.php";

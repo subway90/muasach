@@ -13,7 +13,7 @@
                     <div class="wow fadeIn" data-wow-delay="0.3s">
                         <form action="<?=ACT?>dang-nhap<?=$subURL?>" method="post">
                             <div class="row g-3">
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     <div class="form-floating">
                                         <input name="user" value="<?=$username?>" type="text"class="form-control" id="email" placeholder="Your Email">
                                         <label for="user">Tài khoản đăng nhập</label>
@@ -23,6 +23,12 @@
                                     <div class="form-floating">
                                         <input name="password" value="" type="password" class="form-control" id="subject" placeholder="Subject">
                                         <label for="subject">Mật khẩu</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input <?=$remember?> class="form-check-input" name="rememberUser" type="checkbox" value="checked" id="rememberUser">
+                                        <label class="form-check-label" for="rememberUser">Ghi nhớ tài khoản</label>
                                     </div>
                                 </div>
                                 <div class="col-12">

@@ -1,9 +1,14 @@
 <?php
-function dang_nhap($user,$pass){
+function login($user,$pass){
     $sql = "select * from accounts WHERE user = '".$user."' AND pass ='".$pass."' AND status = 1";
-    $result = pdo_query_one($sql);
-    return $result;
+    return pdo_query_one($sql);
 }
+
+function autoLogin($user,$pass){
+    $sql = "select * from accounts WHERE user = '".$user."' AND pass ='".$pass."' AND status = 1";
+    $_SESSION['user'] = pdo_query_one($sql);
+}
+
 function addAccount($user,$pass,$fullName,$email,$phone,$address){
     $sql = "INSERT INTO accounts(user,pass,fullName,email,phone,address,role,status,dateCreate) values('$user','$pass','$fullName','$email','$phone','$address',2,1,current_timestamp())";
     pdo_execute($sql);

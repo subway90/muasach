@@ -20,7 +20,6 @@ session_start();
 show_alert();
 
 # [VARIBLE START]
-$update = UPDATE;
 if(!empty($_SESSION['user'])){
 $bellActive = false; $notify = 0;
 $listFB = getAllByIdUser('feedback',$_SESSION['user']['id'],1);
@@ -34,6 +33,15 @@ $listFB = getAllByIdUser('feedback',$_SESSION['user']['id'],1);
     }
 }
 $activeModal = 'pay';
+if(!empty($_SESSION['user'])) {
+    $notifyCart = '
+    <span class="position-absolute ms-2 top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        99
+         <span class="visually-hidden">unread messages</span>
+    </span>';
+}
+$notifyCart = '';
+
 
 # [SESSION]
 if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
@@ -44,7 +52,7 @@ if(!isset($_SESSION['alert_3'])) $_SESSION['alert_3'] = [];
 
 # [CASE]
 if(isset($_GET['act'])){
-    if($update === true){
+    if(UPDATE === true){
         require_once 'case/update.php';
         exit;
     }

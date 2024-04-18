@@ -52,6 +52,9 @@
 <!-- [MENU ICON] End -->
 
 <body <?php if(isset($_SESSION['background']) && !empty($_SESSION['background'])) echo $_SESSION['background']?> class='position-relative'>
+<!-- function show alert -->
+<?=showAlert()?>
+
     <!-- Spinner Start -->
     <!-- <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -80,7 +83,11 @@
                     <div class="navbar-nav ms-auto align-items-lg-center">
                         <a href="<?=URL?>" class="nav-item nav-link text-dark">Trang chủ</a>
                         <a href="<?=ACT?>san-pham" class="nav-item nav-link text-dark">Sản phẩm</a>
-                        <a href="<?=ACT?>gio-hang" class="nav-item nav-link text-dark">Giỏ hàng</a>
+                        <a href="<?=ACT?>gio-hang" class="nav-item nav-link text-dark position-relative">
+                            Giỏ hàng
+                            <?=$notifyCart?>
+                        </a>
+                        <!-- <a href="<?=ACT?>gio-hang" class="nav-item nav-link text-dark">Giỏ hàng</a> -->
                         <div class="nav-item dropdown position-relative">
                         <!-- [Đã đăng nhập] -->
                         <?php if(!empty($_SESSION['user'])){ ?>

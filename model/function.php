@@ -339,14 +339,12 @@ function showAlert(){
         }
       }      
     </style>
-    <div style="margin-top: 5rem">
-        <div class="position-fixed end-0 me-1">
-            <div class="w-100 alert alert-'.$_SESSION['alert_3'][0].' alert-dismissible fade show m-0 rounded-0" role="alert">
-                <span class="">'.$_SESSION['alert_3'][1].'</span>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <div class="bg-'.$_SESSION['alert_3'][0].' line-bar"></div>
+    <div class="position-fixed end-0 me-1 mt-5 pt-5">
+        <div class="w-100 alert alert-'.$_SESSION['alert_3'][0].' border-0 alert-dismissible fade show m-0 rounded-0" role="alert">
+            <span class="">'.$_SESSION['alert_3'][1].'</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        <div class="bg-'.$_SESSION['alert_3'][0].' line-bar"></div>
     </div>
     <script>
         function closeAlert() {

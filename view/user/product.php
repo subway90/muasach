@@ -49,8 +49,8 @@
                     $product = getAll('products', 1);   
                     for ($i = 0; $i < count($product); $i++) {
                         extract($product[$i]);
-                        extract(getOneFieldByID('author','name authorName',$idAuthor,1));
-                        extract(getOneFieldByID('publishing','name publishingName',$idPublishing,1));
+                        extract(getOneFieldByID('author','name authorName',$idAuthor,0));
+                        extract(getOneFieldByID('publishing','name publishingName',$idPublishing,0));
                         ?>
                         <div class="product col-6 col-md-4 col-lg-3 p-2 wow fadeIn p-0" data-wow-delay="0.1s">
                             <a href="<?= ACT ?>chi-tiet/<?= createSlug($name) ?>">

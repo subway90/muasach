@@ -11,6 +11,6 @@ if(isset($_GET['add'])){
         if(empty($check)) addCart($_SESSION['user']['id'],$_GET['id'],$_GET['quantity']);
         else updateQuantity($check,'quantity+1');
     }
-    $_SESSION['alert_2'] = "Thêm sản phẩm thành công ! <a href='".ACT."gio-hang'>&rarr; Giỏ hàng</a>";
+    addAlert('success','<i class="fas fa-check-circle"></i> Thêm sản phẩm thành công ! <a href="'.ACT.'gio-hang">&rarr; Giỏ hàng</a>');
     header("Location:".ACT."san-pham");
 }

@@ -108,14 +108,17 @@
                                     }
                                 }
                             } ?>
-                        
                     </tbody>
+                    <tfoot>
+                        <tr class='align-middle'>
+                            <td colspan="8">
+                    <?php if(!empty($total)){ ?><a href="#" class="float-end btn border-1 btn-sm btn-outline-danger me-lg-2" data-bs-toggle="modal" data-bs-target="#delcart"><i class="fas fa-trash-alt"></i> tất cả</a>
+                    <?php }else{?>Chưa có sản phẩm nào. <a href="<?=ACT?>san-pham" class="text-primary">&rarr; Mua sản phẩm</a><?php } ?>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
                 <div class="w-100 mt-2">
-                <?php
-                if(!empty($_SESSION['cart']) || count($cart) != 0){ ?>
-                <a href="#" class="float-end btn border-1 btn-sm btn-outline-danger me-2"  data-bs-toggle="modal" data-bs-target="#delcart">Xóa tất cả</a>
-                <?php }?>
                     <!-- [MODAL] -->
                     <div class="modal fade" id="delcart" tabindex="-1" aria-labelledby="delcartLabel" aria-hidden="true">
                     <div class="modal-dialog">

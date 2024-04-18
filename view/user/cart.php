@@ -24,7 +24,7 @@
                     <tbody class="align-middle">
                         <?php
                             if(empty($_SESSION['user'])){ // Trường hợp: Chưa đăng nhập (GUEST)
-                                if(!empty($_SESSION['cart'])){ //Nếu CART có SP
+                                if(!empty($total)){ //Nếu CART có SP
                                     for ($i=0; $i < count($_SESSION['cart']); $i++) {
                                         $product = getOneFieldByID('products','image,name,quantity quantityMax,price,priceSale',$_SESSION['cart'][$i]['id'],1);// select SP theo ID
                                         if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)
@@ -55,18 +55,9 @@
                         </tr>
                         <?php 
                                     }
-                                }else{ ?>
-                        <tr>
-                            <td colspan="9" class="align-middle">Chưa có sản phẩm</td>
-                        </tr>
-                        <?php
                                 }
                             }else{  //Trường hợp: Đã đăng nhập (USER)
-                                if(empty($cart)){ ?>
-                        <tr>
-                            <td colspan="9" class="align-middle">Chưa có sản phẩm</td>
-                        </tr>
-                        <?php }else{
+                                if(!empty($total)){ //NẾU CÓ SP TRONG CART
                                 for ($i=0; $i < count($cart); $i++) { 
                                     $product = getOneFieldByID('products','image,name,price,priceSale,quantity quantityMax',$cart[$i]['idProduct'],1);
                                     if(empty($product)) continue; //Nếu SP không tồn tại (status = 2)

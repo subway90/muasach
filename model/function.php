@@ -90,7 +90,6 @@ function getAllByIdUser($table,$idUser,$status){
     $sql = "SELECT * FROM ".$table." WHERE idUser = ".$idUser." AND ".$status;
     $list = pdo_query($sql);
     return $list;
-    var_dump($list); exit;
 }
 /**
  * Hàm này để lấy một field từ $table và điều kiện $status
@@ -108,6 +107,33 @@ function getOneFieldByID($table,$field,$id,$status){
     $result = pdo_query_one($sql);
     return $result;
 }
+
+/**
+ * Hàm này để lấy tất cả từ $table và điều kiện CUSTOM
+ * @param string $table bảng cần thực thi
+ * @param string $field  field cần lấy, muốn lấy nhiều thì thêm dấu phẩy, ví dụ: "id,name"
+ * @param string $custom Điều kiện cần lấy [SQL: after WHERE]
+ */
+function getAllFieldByCustom($table,$field,$custom){
+    $sql = "SELECT ".$field."
+    FROM ".$table." WHERE ".$custom;
+    $result = pdo_query($sql);
+    return $result;
+}
+
+/**
+ * Hàm này để lấy một dòng từ $table và điều kiện CUSTOM
+ * @param string $table bảng cần thực thi
+ * @param string $field  field cần lấy, muốn lấy nhiều thì thêm dấu phẩy, ví dụ: "id,name"
+ * @param string $custom Điều kiện cần lấy [SQL: after WHERE]
+ */
+function getOneFieldByCustom($table,$field,$custom){
+    $sql = "SELECT ".$field."
+    FROM ".$table." WHERE ".$custom;
+    $result = pdo_query_one($sql);
+    return $result;
+}
+
 function getOneField($table,$field,$status){
     if($status==1) $status = "status = 1";
     if($status==2) $status = "status = 2";

@@ -27,3 +27,23 @@ function deleteAllCart($input){
     if(!empty($_SESSION['user'])) $sql = "DELETE FROM cart WHERE idUser=".$input;
     pdo_execute($sql);
 }
+
+function showCart() {
+    $countProInCart = 0;
+    if(!empty($_SESSION['user'])) { //Trường hợp đã đăng nhập
+        $listIdProInCart = getAllFieldByCustom('cart','idProduct','idUser = '.$_SESSION['user']['id']);
+        for ($i=0; $i < count($listIdProInCart); $i++) { 
+            extract($listIdProInCart[$i]);
+            if(!empty(getOneFieldByCustom('products','id','id = '.$idProduct.' AND status = 1'))) $countProInCart++;
+        }
+        
+    }else{ //Trường hợp chưa đăng nhập
+        if(!empty($_SESSION['cart'])) {
+            for ($i=0; $i < count($_SESSION['cart']); $i++) { 
+                extract($_SESSION['cart'][$i]);
+                if(!empty(getOneFieldByCustom('products','id','id = '.$id.' AND status = 1'))) $countProInCart++;
+            }
+        }
+    }
+    return $countProInCart;
+}

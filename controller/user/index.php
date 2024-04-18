@@ -33,15 +33,7 @@ $listFB = getAllByIdUser('feedback',$_SESSION['user']['id'],1);
     }
 }
 $activeModal = 'pay';
-if(!empty($_SESSION['user'])) {
-    $notifyCart = '
-    <span class="position-absolute ms-2 top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        99
-         <span class="visually-hidden">unread messages</span>
-    </span>';
-}
-$notifyCart = '';
-
+$countProductInCart = showCart();
 
 # [SESSION]
 if(!isset($_SESSION['user'])) $_SESSION['user'] = [];

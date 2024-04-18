@@ -85,7 +85,12 @@
                         <a href="<?=ACT?>san-pham" class="nav-item nav-link text-dark">Sản phẩm</a>
                         <a href="<?=ACT?>gio-hang" class="nav-item nav-link text-dark position-relative">
                             Giỏ hàng
-                            <?=$notifyCart?>
+                            <?php if(!empty($countProductInCart)){ ?>
+                            <span class="position-absolute ms-2 top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                <?=$countProductInCart?>
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                            <?php } ?>
                         </a>
                         <!-- <a href="<?=ACT?>gio-hang" class="nav-item nav-link text-dark">Giỏ hàng</a> -->
                         <div class="nav-item dropdown position-relative">

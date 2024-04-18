@@ -32,6 +32,7 @@ $listFB = getAllByIdUser('feedback',$_SESSION['user']['id'],1);
         }
     }
 }
+$arr_error = [];
 $activeModal = 'pay';
 $countProductInCart = showCart(1);
 $listCart = showCart(2);

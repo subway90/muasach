@@ -9,12 +9,13 @@
                 </div>
                 <div class="col-lg-7 wow fadeIn pt-lg-5" data-wow-delay="0.1s">
                     <p class="mb-4">Bạn chưa có tài khoản <a href="<?=ACT?>dang-ky">&rarr; Đăng kí</a></p>
+                    <?=showError($arr_error)?>
                     <div class="wow fadeIn" data-wow-delay="0.3s">
-                        <form action="<?=ACT?>dang-nhap" method="post">
+                        <form action="<?=ACT?>dang-nhap<?=$subURL?>" method="post">
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input name="user" value="<?=$user?>" type="text"class="form-control" id="email" placeholder="Your Email">
+                                        <input name="user" value="<?=$username?>" type="text"class="form-control" id="email" placeholder="Your Email">
                                         <label for="user">Tài khoản đăng nhập</label>
                                     </div>
                                 </div>

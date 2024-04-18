@@ -209,17 +209,20 @@ function createTokenChar($length){
 
 /**
  * Kiểm tra xem email có hợp lệ hay không
- * Điều kiện: cho phép kí tự a còng [@](1),dấu chấm [.](nhiều) và [a-z][0-9]
+ * Điều kiện: cho phép kí tự a còng [@](1),dấu chấm [.](nhiều) và [a-z][0-9] 
+ * Ví dụ abc.def@domain.com.vn
  * @param $input nhập email cần kiểm tra. Nếu hợp lệ thì trả về TRUE, ngược lại là FALSE
  */
 function checkEmail($input){
-    $arr_email = explode('@',str_replace(".","",$input));
+    $arr_email = explode('@',$input);
     if(count($arr_email) != 2) return false;
     else {
+        # Tìm dấu chấm (.) ở mảng 2
+        if(strpos($arr_email[1],'.')==false) return false; //strpos tìm kí tự và trả về vị trí của kí tự đó trong mảng, nếu ko tìm thấy -> trả về false
+        # Biến chuỗi thành mảng
         $arr_input = mb_str_split(strtolower($arr_email[0].$arr_email[1]));
-        // var_dump($arr_input); exit;
-        $word_diff = array_diff($arr_input,[0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']);
-        if(count($word_diff) == 0) return true;
+        # So sánh kí tự
+        if(count(array_diff($arr_input,[0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','.'])) == 0) return true;
         else return false; 
     }
 }

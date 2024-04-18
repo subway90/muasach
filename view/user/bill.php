@@ -31,10 +31,10 @@
                         <?=number_format($price)?>
                         </td>
                         <td class="align-middle">
-                            <?=$_SESSION['cart'][$i]['quantity']?>
+                            <?=$quantity?>
                         </td>
                         <td class="align-middle">
-                            <?=number_format($_SESSION['cart'][$i]['quantity']*$price)?>
+                            <?=number_format($quantity*$price)?>
                         </td>
                     </tr>
                 </tbody>
@@ -58,20 +58,12 @@
         <?php if(empty($_SESSION['user'])){ ?>
             <!-- CẢNH BÁO CHƯA ĐĂNG NHẬP -->
             <div class="alert alert-warning alert-dismissible fade show border-0" role="alert">
-                <span class="mb-4">nếu bạn <span class="text-primary fw-bold">ĐĂNG NHẬP</span> thì sẽ được <span class="text-success fw-bold">lưu lịch sử mua hàng</span> & <span class="text-danger fw-bold">tích điểm</span> ! <a href="<?=ACT?>dang-nhap" class="text-primay">&rarr; Đăng nhập</a></span>
+                <span class="mb-4">nếu bạn <span class="text-primary fw-bold">ĐĂNG NHẬP</span> thì sẽ được <span class="text-success fw-bold">lưu lịch sử mua hàng</span> & <span class="text-danger fw-bold">tích điểm</span> ! <a href="<?=ACT?>dang-nhap&addCart" class="text-primay">&rarr; Đăng nhập</a></span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php }?>
-        <div class="">
-        <?php
-        for ($i=1; $i < count($arr_valid); $i++) { 
-        ?>
-            <div class="ms-2 mb-2 text-danger">
-                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-        <?php print_r($arr_valid[$i])?>
-            </div>
-        <?php } ?>
-        </div>
+
+        <?=showError($arr_error)?>
             <div class="wow fadeIn" data-wow-delay="0.3s">
                 <div class="ms-2 mb-2 fs-6"><span class="text-danger">&#10039;</span>: Thông tin bắt buộc điền</div>
                 <form action="<?=ACT?>gio-hang&thanhtoan" method="post">

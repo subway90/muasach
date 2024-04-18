@@ -82,26 +82,37 @@ if(!empty($_SESSION['user'])){ // nếu đã đăng nhập -> load thông tin c�
     $fullName = "";$phone = "";$email = ""; $address = "";$mess = "";$pay=1;
 }
 
-
 // [THANH TOÁN]
-$arr_valid[] = array();$point_valid=0;
+$point_valid=0;
 if(isset($_REQUEST['thanhtoan']) && $total !=0){
+    
     $pay = $_POST['pay'];
+
     $fullName = $_POST['fullName'];
-    if(empty($fullName)) $arr_valid[] = "Chưa nhập họ và tên";
+    if(empty($fullName)) $arr_error[] = "Chưa nhập họ và tên";
     else $point_valid++;
+
     $phone = $_POST['phone'];
-    if(empty($phone)) $arr_valid[] = "Chưa nhập SĐT";
+    if(empty($phone)) $arr_error[] = "Chưa nhập SĐT";
     else {
         $checkPhone = checkPhone($phone);
-        if($checkPhone == false) $arr_valid[] = "SĐT không hợp lệ";
+        if($checkPhone == false) $arr_error[] = "SĐT không hợp lệ";
         else $point_valid++;
     }
+
     $address = $_POST['address'];
-    if(empty($address)) $arr_valid[] = "Chưa nhập địa chỉ";
+    if(empty($address)) $arr_error[] = "Chưa nhập địa chỉ";
     else $point_valid++;
+
     $email = $_POST['email'];
+    if(!empty($email)) {
+        if(checkEmail($email) == false) {
+            $point_valid--;
+            $arr_error[] = "Email không hợp lệ";
+        }
+    }
     $mess = $_POST['mess'];
+
     if($point_valid < 3) $activeModal = 'onload'; //Load lại PAY-MODAL ở CART
     else{
         if(!empty($_SESSION['user'])){ //nếu đã ĐĂNG NHẬP

@@ -10,7 +10,7 @@ function checkCart($input){
 }
 function checkCartByID($input){
     $input = str_replace([' ','"',"'","-","."],"",$input);
-    if(!empty($_SESSION['user'])) $sql = "SELECT id FROM cart WHERE idProduct = ".$input." AND idUser = ".$_SESSION['user']['id'];
+    $sql = "SELECT id FROM cart WHERE idProduct = ".$input." AND idUser = ".$_SESSION['user']['id'];
     $result = pdo_query_one($sql);
     return $result['id'];
 }

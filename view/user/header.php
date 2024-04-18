@@ -1,4 +1,3 @@
-<?php require_once '../../controller/user/case/app.php'?>
 <!DOCTYPE html>
 <html lang="en">
 

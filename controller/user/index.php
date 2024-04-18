@@ -54,6 +54,9 @@ if(isset($_GET['act'])){
     $arrayURL = explode('/',$_GET['act']);
     $act=$arrayURL[0];
         switch($act) {
+            case "app":
+                require_once 'case/app.php';
+                break;
             case "trang-chu":
                 $title='Trang chủ';
                 require_once 'case/home.php';

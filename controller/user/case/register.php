@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             }else $arr_error[] = 'Chưa nhập xác thực mật khẩu.';
         }else $verifypass = "";
     if($point_valid_register==7){
-        addAccount($user,md5($pass),$hovaten,$email,$sodienthoai,$diachi);
+        addAccount(1,$user,md5($pass),$hovaten,$email,$sodienthoai,$diachi,'user_default.jpg');
         $susscess = true;
     }
 }

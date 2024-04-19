@@ -1,8 +1,18 @@
 <?php
 if(empty($_SESSION['user'])){
     #FILE
-    include '../../API/facebook/facebook_source.php';
-
+    require_once '../../API/facebook/facebook_source.php';
+    #LOGIN FACEBBOK SUCCESS
+    if(!empty($_SESSION['user_facebook'])){
+        extract($_SESSION['user_facebook']);
+        if(checkUserExist($username) === true) {
+            addAccount(2,$username,'',$fullName,$email,'','',$image);
+        }
+        #tự động ĐĂNG NHẬP 
+        autoLogin($username,'');
+        addAlert('success',' Chào mừng bạn đến với <strong>muasach.net</strong> !');
+        header('Location: '.ACT.'trang-chu');
+    }
     # BIẾN KHỞI TẠO
     $subURL = "";
     $remember = "";

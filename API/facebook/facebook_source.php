@@ -1,8 +1,7 @@
 <?php
-include 'Facebook/autoload.php';
-include 'fbconfig.php';
+require_once 'Facebook/autoload.php';
+require_once 'fbconfig.php';
 
 $helper = $fb->getRedirectLoginHelper();
 $permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('https://subway90.vn/API/facebook/fb-callback.php', $permissions);
-?>
+$loginUrl = $helper->getLoginUrl(URL_CALL_BACK, $permissions);

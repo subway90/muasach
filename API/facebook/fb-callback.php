@@ -1,7 +1,8 @@
 <?php
-
+include '../../config/URL.php';
 include 'Facebook/autoload.php';
 include 'fbconfig.php';
+session_start();
 $helper = $fb->getRedirectLoginHelper();
 if (isset($_GET['state'])) {
     $helper->getPersistentDataHandler()->set('state', $_GET['state']);
@@ -35,7 +36,7 @@ if (!isset($accessToken)) {
 //Lấy thông tin của người dùng trên Facebook
 try {
     // Returns a `Facebook\FacebookResponse` object
-    $response = $fb->get('/me?fields=id,name,email', $accessToken->getValue());
+    $response = $fb->get('/me?fields=id,name,email,picture', $accessToken->getValue());
     #DATA
     
 } catch (Facebook\Exceptions\FacebookResponseException $e) {
@@ -47,5 +48,5 @@ try {
 }
 
 $fbUser = $response->getGraphUser();
-var_dump($fbUser);
-
+if(!empty($fbUser)) $_SESSION['user_facebook'] = ['username' => $fbUser['id'],'fullName'=>$fbUser['name'],'email'=>$fbUser['email'],'image'=>$fbUser['picture']['url']];
+header("Location: ".ACT."dang-nhap");

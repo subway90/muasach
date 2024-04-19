@@ -2,7 +2,8 @@
     <div class="container-fluid py-5">
         <div class="container">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-primary mb-5">Đăng nhập tài khoản</h1></div>
+                <h1 class="text-primary mb-5">Đăng nhập tài khoản</h1>
+            </div>
             <div class="row g-5">
                 <div class="col-lg-5 wow fadeIn text-center" data-wow-delay="0.5s">
                     <img src="<?=URL?>/uploads/system/kablam-welcome.png" alt="LOGO WELCOM" class="w-50">

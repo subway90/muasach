@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title><?php if(isset($title) && !empty($title)) echo$title; else echo'Mua Sách'?></title>
@@ -96,7 +95,7 @@
                         <!-- [Đã đăng nhập] -->
                         <?php if(!empty($_SESSION['user'])){ ?>
                             <a href="#" class="nav-link dropdown-toggle m-0 fw-bold text-dark" data-bs-toggle="dropdown">
-                                <span><img width="35px" height="35px" class="me-2" src="<?=URL?>/uploads/user/avatar/<?=$_SESSION['user']['image']?>" alt="LOGO"></span>
+                                <span><img width="35px" height="35px" class="me-2" src="<?=urlPath().$_SESSION['user']['image']?>" alt="LOGO"></span>
                                 <?=$_SESSION['user']['fullName']?>
                             </a>
                             <?php if($bellActive) echo'<span class="position-absolute top-0 start-100 translate-middle badge rounded-circle px-2 bg-danger ms-lg-1"><i class="bell fas fa-bell "></i></span>'?>

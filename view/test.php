@@ -2,14 +2,13 @@
     <div class="h1 text-danger">TEST AREA</div>
     <hr class="border border-danger">
 <?php
+#KHU VỰC CODE TEST
 if($verify == true){
-    $strTest = "Hiêu ĐZ SUPER SAIYAN BLUE LEVEL MAX";
-    echo str_replace(' ','',$strTest);
+?>
 
-    $color = array('orange,red,blue,cyan,green,black,white');
-    echo $color[0];
+<img width="40" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1787666098410647&height=50&width=50&ext=1716106158&hash=AbbcmQWg4YvLbm5pFZqI23aE" alt="">
 
-    #KHU VỰC CODE TEST
+<?php
     function checkPass($input,$hash){
         $pass_verify = $hash;
         $enteredPassword = $input;
@@ -23,6 +22,9 @@ if($verify == true){
     echo '<br>'.checkPass('T1234563',$hash);
     echo '<br>';
     echo formatTime('2024-05-31 12:24:38','MM/DD lúc hh:mm');
+
+
+#NHẬP MẬT KHẨU
 }else{?>
     <div class="w-50 m-auto">
         <form class="input-group" action="" method="post">

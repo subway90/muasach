@@ -1,2 +1,2 @@
 <?php
-header('Location: /muasach/trang-chu');
+header('Location: /trang-chu');

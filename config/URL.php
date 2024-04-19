@@ -1,5 +1,5 @@
 <?php
-    const DOMAIN = "http://localhost/muasach";
+    const DOMAIN = "https://subway90.vn";
 
     
     define('ACT',DOMAIN.'/');

@@ -428,3 +428,11 @@ img.animated.pulse {
     border-right: none;
 }
 
+.btn-outline-blue {
+    border: 1px solid #2665e4; 
+    color: #2665e4;
+}
+.btn-outline-blue:hover {
+    background-color:  #2665e4; 
+    color: #ffffff;
+}

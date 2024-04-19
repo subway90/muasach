@@ -32,7 +32,12 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                        <button class="btn btn-primary w-25 py-3" type="submit">Đăng nhập</button>
+                                        <button class="btn btn-primary " type="submit">Đăng nhập</button>
+                                        <span class="ms-lg-3">
+                                            <small class="text-muted mx-2">hoặc với</small>
+                                            <a href="#" class="btn border-1 btn-outline-danger mx-lg-2">Google</a>
+                                            <a href="#" class="btn border-1 btn-outline-blue">Facebook</a>
+                                        </span>
                                 </div>
                             </div>
                         </form>

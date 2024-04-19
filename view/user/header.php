@@ -37,11 +37,11 @@
 <!-- [MENU ICON] Start -->
 <div style="height: 50%; z-index:3" class="position-fixed end-0 ps-4 ps-lg-0 top-50 col-3 col-md-3 col-lg-1">
         <span class="w-100 p-0">
-            <a class="btn btn-lg btn-primary btn-lg-square mx-auto" href="<?=ACT.$arrayURL[0]?>/<?php if(isset($_SESSION['background']) && !empty($_SESSION['background'])) echo'mode-light'; else echo'mode-dark'?>" >
+            <a class="btn btn-lg btn-primary btn-lg-square mx-auto" href="<?=ACT.'app/'.$arrayURL[0]?>/<?php if(isset($_SESSION['background']) && !empty($_SESSION['background'])) echo'mode-light'; else echo'mode-dark'?>" >
                 <i class="<?php if(isset($_SESSION['background']) && !empty($_SESSION['background'])) echo'text-light'; else echo'text-dark'?> fas fa-adjust"></i>
             </a>
         </span>
-        <span class="w-100 ps-1">
+        <span class="w-100 ps-1">   
             <button class="btn btn-lg btn-danger btn-lg-square mx-auto animated pulse infinite" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <i class="fas fa-comment-dots"></i>
             </button>

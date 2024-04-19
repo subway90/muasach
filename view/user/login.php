@@ -31,12 +31,18 @@
                                         <label class="form-check-label" for="rememberUser">Ghi nhớ tài khoản</label>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-flex justify-content-lg-start justify-content-between align-items-center">
                                         <button class="btn btn-primary " type="submit">Đăng nhập</button>
-                                        <span class="ms-lg-3">
-                                            <small class="text-muted mx-2">hoặc với</small>
-                                            <a href="#" class="btn border-1 btn-outline-danger mx-lg-2">Google</a>
-                                            <a href="#" class="btn border-1 btn-outline-blue">Facebook</a>
+                                        <small class="mx-3 text-muted">hoặc với</small>
+                                        <span class="">
+                                            <!-- Google Login -->
+                                            <a href="#" class="btn border-1 btn-outline-danger">
+                                                <div class="d-flex align-items-center"><i class="fab fa-google me-2"></i><small>google</small></div>
+                                            </a>
+                                            <!-- Facebook Login -->
+                                            <a href="<?=$loginUrl?>" class="btn border-1 btn-outline-blue">
+                                                <div class="d-flex align-items-center"><i class="fab fa-facebook me-2"></i><small>facebook</small></div>
+                                            </a>
                                         </span>
                                 </div>
                             </div>

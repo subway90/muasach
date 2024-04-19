@@ -52,7 +52,7 @@
                         <tr class='align-middle'>
                             <td colspan="8">
                     <?php if(!empty($total)){ ?><a href="#" class="float-end btn border-1 btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delcart"><i class="fas fa-trash-alt"></i> tất cả</a>
-                    <?php }else{?>Chưa có sản phẩm nào. <a href="<?=ACT?>san-pham" class="text-primary">&rarr; Mua sản phẩm</a><?php } ?>
+                    <?php }else{?>Chưa có sản phẩm nào.<?php } ?>
                             </td>
                         </tr>
                     </tfoot>
@@ -81,41 +81,20 @@
                 <div class="card border-0 bg-light text-dark">
                     <div class="card-body p-2">
                         <h5 class="card-title">Giỏ hàng</h5>
-                        <?php
+                        <?php 
                         if($total!=0){
-                            if(empty($_SESSION['user'])){ //Chưa đăng nhập
-                                for ($i=0; $i < count($_SESSION['cart']); $i++) {
-                                    $result = getOneByID('products',$_SESSION['cart'][$i]['id'],1);
-                                    if(empty($result)) continue; //Nếu SP không tồn tại (status = 2)
-                                    else {
-                                        extract($result);
-                                        if($priceSale != 0) $price = $priceSale;
-                                    }
+                            for ($i=0; $i < count($listCart); $i++) {
+                            extract($listCart[$i]);
+                            if(!empty($priceSale)) $price = $priceSale;
                             ?>
                             <div class="d-flex mb-2">
                                 <div class="col-9 text-start"><?=$name?></div>
-                                <div class="col-3 text-end"><?=number_format($price*$_SESSION['cart'][$i]['quantity'])?> đ</div>
+                                <div class="col-3 text-end"><?=number_format($price*$quantity)?> đ</div>
                             </div>
-                            <?php }
-                            }else{
-                                for ($i=0; $i < count($cart); $i++) {
-                                    $result = getOneByID('products',$cart[$i]['idProduct'],1);
-                                    if(empty($result)) continue; //Nếu SP không tồn tại (status = 2)
-                                    else {
-                                        extract($result);
-                                        if($priceSale != 0) $price = $priceSale;
-                                    }
-                        ?>
-                        <div class="d-flex">
-                            <div class="col-9 text-start"><?=$name?></div>
-                            <div class="col-3 text-end"><?=number_format($price*$cart[$i]['quantity'])?> đ</div>
-                        </div>
-                        <?php   } 
+                            <?php 
                             }
                         }else{ ?>
-                        <div class="d-flex">
-                            <div class="col-12 text-center">Chưa có sản phẩm</div>
-                        </div>
+                            <div class="col-12 mt-4 text-center"><a href="<?=ACT?>san-pham" class="text-primary">&rarr; Mua sản phẩm</a></div>
                         <?php 
                         }
                         if($total!=0){ ?>

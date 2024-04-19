@@ -1,5 +1,8 @@
 <?php
 if(empty($_SESSION['user'])){
+    #FILE
+    include '../../API/facebook/facebook_source.php';
+
     # BIẾN KHỞI TẠO
     $subURL = "";
     $remember = "";

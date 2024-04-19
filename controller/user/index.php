@@ -4,15 +4,15 @@
 // echo '</pre>'; exit;
 
 # [FILES]
-include "../../config/URL.php";
-include "../../config/APP.php";
-include "../../model/pdo.php";
-include "../../model/function.php";
-include "../../model/user/product.php";
-include "../../model/user/user.php";
-include "../../model/user/cart.php";
-include "../../model/user/bill.php";
-include "../../model/user/notifycation.php";
+require_once "../../config/APP.php";
+require_once "../../config/URL.php";
+require_once "../../model/pdo.php";
+require_once "../../model/function.php";
+require_once "../../model/user/product.php";
+require_once "../../model/user/user.php";
+require_once "../../model/user/cart.php";
+require_once "../../model/user/bill.php";
+require_once "../../model/user/notifycation.php";
 
 # [FUNCTION]
 ob_start(); 

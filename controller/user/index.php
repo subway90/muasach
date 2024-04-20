@@ -1,7 +1,4 @@
 <?php
-// echo '<pre>';
-// print_r($_SERVER);
-// echo '</pre>'; exit;
 
 # [FILES]
 require_once "../../config/APP.php";
@@ -18,6 +15,7 @@ require_once "../../model/user/notifycation.php";
 ob_start(); 
 session_start();
 show_alert();
+
 # [SESSION]
 if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
@@ -51,12 +49,10 @@ $total = showCart(3);
 
 # [CASE]
 if(isset($_GET['act'])){
-    if(UPDATE === true){
-        require_once 'case/update.php';
-        exit;
-    }
     $arrayURL = explode('/',$_GET['act']);
     $act=$arrayURL[0];
+    ##UPDATE
+    if(UPDATE === true) require_once 'case/update.php';
         switch($act) {
             case "app":
                 require_once 'case/app.php';
@@ -116,8 +112,8 @@ if(isset($_GET['act'])){
         }
 }else{
     $title = "Trang chủ";
-    include "../../view/user/header.php";
-    include "../../view/user/home.php";
+    require_once "../../view/user/header.php";
+    require_once "../../view/user/home.php";
 }
 # [LAYOUT]
-include "../../view/user/footer.php";
+require_once "../../view/user/footer.php";

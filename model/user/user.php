@@ -34,7 +34,12 @@ function updateAvatar($image,$id){
     pdo_execute($sql);
 }
 
+/**
+ * Trả về đường dẫn ảnh phụ thuộc vào USER[type]
+ */
 function urlPath(){
-    if($_SESSION['user']['type'] == 1) return URL.'/uploads/user/avatar/';
-    else return '';
+    if($_SESSION['user']['type'] != 1){
+        if(strstr($_SESSION['user']['image'],'http')) return '';
+    }
+    return URL.'/uploads/user/avatar/';
 }

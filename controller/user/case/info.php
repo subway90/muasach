@@ -30,26 +30,28 @@ if(!empty($_SESSION['user'])){
         else $arr_error[] = "Địa chỉ không được để trống.";
 
         if($point_valid==4){
-            $success = true; //thông báo update thành công bên VIEW
+            addAlert('success','<i class="fas fa-check-circle"></i> Cập nhật <strong>thông tin</strong> thành công !');
             updateUser($fullName,$email,$phone,$address,$_SESSION['user']['id']); //update lên database
             $_SESSION['user'] = getOneByID('accounts',$_SESSION['user']['id'],1); //reload lại thông tin user
         }
     }
-    // [CẬP NHẬT THÔNG TIN: avatar]
+    // [THAY ẢNH ĐẠI DIỆN]
     if(isset($_POST['img'])){
         $image = $_FILES['image'];
-        if(empty(basename($_FILES['image']['name']))) alert('Bạn chưa chọn ảnh nào.');
+        if(empty(basename($_FILES['image']['name']))) addAlert('danger','<i class="fas fa-times-circle"></i> Vui lòng <strong>chọn ảnh</strong> trước khi thay.');
         else{
-            $checkImage = checkImage($image,2); //kiểm tra điều kiện file ảnh có hợp lệ hay không | Điều kiện: (trỏ chuột vào hàm để xem)
+            $checkImage = checkImage($image,2); //kiểm tra điều kiện file ảnh có hợp lệ hay không
             if($checkImage === true){
-                $hash_name_image =  createTokenChar(16); //mã hóa tên ảnh | [Để tránh tình trạng ảnh chung tên -> nếu chung tên thì khi xóa ảnh sẽ bị xóa trùng luôn]
-                $image['name'] = $hash_name_image.'.'.substr($image['type'],6); //hàm substr: cắt chuỗi [type] tại vị trí 6
-                if($_SESSION['user']['image'] != 'user_default.jpg') unlink("../uploads/user/avatar/".$_SESSION['user']['image']); //gỡ hình cũ
-                move_uploaded_file($image["tmp_name"], "../uploads/user/avatar/".$image["name"]); //up hình mới
-                $success = true; //thông báo update thành công bên VIEW
+                $hash_name_image =  createTokenChar(16); //mã hóa tên ảnh 
+                $image['name'] = $hash_name_image.'.'.substr($image['type'],6); //định dạng lại tên file
+                # REMOVE ẢNH CŨ
+                if($_SESSION['user']['image'] != 'user_default.jpg' && strstr($_SESSION['user']['image'],'http') == false) unlink("../../uploads/user/avatar/".$_SESSION['user']['image']);
+                move_uploaded_file($image["tmp_name"], "../../uploads/user/avatar/".$image["name"]); //up hình mới
                 updateAvatar($image['name'],$_SESSION['user']['id']); //update lên database
+                addAlert('success','<i class="fas fa-check-circle"></i> Cập nhật <strong>ảnh đại diện</strong> thành công !');
                 $_SESSION['user'] = getOneByID('accounts',$_SESSION['user']['id'],1); //reload lại thông tin user
-            }else alert($checkImage);
+            }else addAlert('danger','<i class="fas fa-times-circle"></i> <strong>Lỗi: </strong> '.$checkImage.' !');
+
         }
     }
     require_once '../../view/user/header.php';

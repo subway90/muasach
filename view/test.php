@@ -6,9 +6,11 @@
 if($verify == true){
 ?>
 
-<img width="40" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1787666098410647&height=50&width=50&ext=1716106158&hash=AbbcmQWg4YvLbm5pFZqI23aE" alt="">
+
 
 <?php
+
+var_dump(strstr($_SESSION['user']['image'],'http'));exit;
     function checkPass($input,$hash){
         $pass_verify = $hash;
         $enteredPassword = $input;

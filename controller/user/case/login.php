@@ -10,8 +10,9 @@ if(empty($_SESSION['user'])){
         }
         #tự động ĐĂNG NHẬP 
         autoLogin($username,'');
-        addAlert('success',' Chào mừng bạn đến với <strong>muasach.net</strong> !');
+        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
         header('Location: '.ACT.'trang-chu');
+        exit;
     }
     # BIẾN KHỞI TẠO
     $subURL = "";
@@ -49,11 +50,12 @@ if(empty($_SESSION['user'])){
                         setcookie('password',md5($_POST['password']),time()+86400*365);
                     }
                     #Authorization
-                    if($_SESSION['user']['role'] == 1){
-                        define('ADMIN','Hieu');
-                        header("Location: ".URL."/controller/admin");
+                    if($_SESSION['user']['role'] != 1){
+                        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
+                        header("Location:".URL);
+                        exit;
                     }
-                    else header("Location:".URL);
+                    else header("Location: ".URL."/controller/admin");
                 }else addAlert('danger','Tài khoản hoặc mật khẩu không chính xác.');
             }else $arr_error[] = 'Vui lòng nhập mật khẩu';
         }else $arr_error[] = 'Vui lòng nhập tài khoản';

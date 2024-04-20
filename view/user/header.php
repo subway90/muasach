@@ -6,7 +6,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
     <!-- Favicon -->
     <link href="<?=URL?>/uploads/system/logo-muasach-1000x1000.png" rel="icon">
 
@@ -54,12 +53,13 @@
 <?=showAlert()?>
 
     <!-- Spinner Start -->
-    <!-- <div id="spinner"
+    <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <!-- <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
-        </div>
-    </div> -->
+        </div> -->
+        <img width="40" src="<?=URL?>/uploads/system/logo-spin.gif" alt="spinner">
+    </div>
     <!-- Spinner End -->
 
     <!-- Navbar Start -->
@@ -69,7 +69,12 @@
                 <a href="<?=URL?>" class="navbar-brand col-6 col-md-6 col-lg-2">
                 <div class="d-flex align-items-center">
                     <div class="p-0 col-12 col-md-12 col-lg-12">
-                        <img class="w-100" src="<?=URL?>/uploads/system/logo-tgs-3.gif" alt="LOGO">
+                        <div class="show-img-logo">
+                        <img class="w-100 img-logo" src="<?=URL?>/uploads/system/logo-ms-940x160.png" alt="LOGO">
+                            <div class="hide-img-logo">
+                                <img class="hide-img-logo w-100" src="<?=URL?>/uploads/system/logo-tgs-3.gif" alt="LOGO">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 </a>

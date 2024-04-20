@@ -52,15 +52,18 @@
 <!-- function show alert -->
 <?=showAlert()?>
 
-    <!-- Spinner Start -->
+<!-- Spinner Start -->
+<?php if(PAGE_LOADING === true){ ?>
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <!-- <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div> -->
         <img width="40" src="<?=URL?>/uploads/system/logo-spin.gif" alt="spinner">
+        <span>Vui lòng đợi giây lát...</span>
     </div>
-    <!-- Spinner End -->
+<?php }?>
+ <!-- Spinner End -->
 
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top">

@@ -52,7 +52,7 @@ if(isset($_GET['act'])){
     $arrayURL = explode('/',$_GET['act']);
     $act=$arrayURL[0];
     ##UPDATE
-    if(UPDATE === true) require_once 'case/update.php';
+    if(PAGE_UPDATE === true) require_once 'case/update.php';
         switch($act) {
             case "app":
                 require_once 'case/app.php';

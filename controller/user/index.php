@@ -27,7 +27,7 @@ if(!isset($_SESSION['alert_3'])) $_SESSION['alert_3'] = [];
 if(!isset($_SESSION['user_facebook'])) $_SESSION['user_facebook'] = [];
 
 # [COOKIE]
-if(isset($_COOKIE['username']) && !empty($_COOKIE['username']) && isset($_COOKIE['password']) && !empty($_COOKIE['password'])) autoLogin($_COOKIE['username'],$_COOKIE['password']);
+if(isset($_COOKIE['username']) && isset($_COOKIE['password'])) autoLogin($_COOKIE['username'],$_COOKIE['password']);
 
 # [VARIBLE START]
 if(!empty($_SESSION['user'])){

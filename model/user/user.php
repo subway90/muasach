@@ -7,7 +7,8 @@ function login($user,$pass){
 function autoLogin($user,$pass){
     if(!empty($pass)) $passSelect = "AND pass ='".$pass."'";
     $sql = "SELECT * FROM accounts WHERE user= '".$user."' ".$passSelect." AND status = 1";
-    $_SESSION['user'] = pdo_query_one($sql);
+    $result = pdo_query_one($sql);
+    if(!empty($result)) $_SESSION['user'] = $result;
 }
 
 function addAccount($type,$user,$pass,$fullName,$email,$phone,$address,$image){

@@ -71,6 +71,7 @@
 <!-- Custom Javascript -->
 <script src="<?= URL ?>/assets/js/main.js"></script>
 <script src="<?= URL ?>/assets/js/countdown.js"></script>
+<script src="<?= URL ?>/assets/js/image.js"></script>
 </body>
 
 </html>

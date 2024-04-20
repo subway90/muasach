@@ -1,11 +1,10 @@
 <?php
-$success = false;
-$point_valid=0;
-$arr_error = [];
 if(!empty($_SESSION['user'])){
+    $passOld = ""; $passNew = "";
     $getUser = getOneByID('accounts',$_SESSION['user']['id'],'1');
     extract($getUser);
-    // [CẬP NHẬT THÔNG TIN: name, email, phone, address]
+
+    # [CẬP NHẬT THÔNG TIN: name, email, phone, address]
     if(isset($_POST['info'])){
         $fullName = $_POST['fullName'];
         if(!empty($fullName)) $point_valid++;
@@ -35,7 +34,8 @@ if(!empty($_SESSION['user'])){
             $_SESSION['user'] = getOneByID('accounts',$_SESSION['user']['id'],1); //reload lại thông tin user
         }
     }
-    // [THAY ẢNH ĐẠI DIỆN]
+
+    # [THAY ẢNH ĐẠI DIỆN]
     if(isset($_POST['img'])){
         $image = $_FILES['image'];
         if(empty(basename($_FILES['image']['name']))) addAlert('danger','<i class="fas fa-times-circle"></i> Vui lòng <strong>chọn ảnh</strong> trước khi thay.');
@@ -54,9 +54,41 @@ if(!empty($_SESSION['user'])){
 
         }
     }
+
+    # [THAY ĐỔI MẬT KHẨU]
+    if(isset($_POST['changePassword'])) {
+        ## Mật khẩu cũ
+        $passOld = $_POST['passOld'];
+        if(!empty($passOld)) {
+            if(md5($passOld) === $_SESSION['user']['pass']){
+                ## Mật khẩu mới
+                $passNew = $_POST['passNew'];
+                if(!empty($passNew)) {
+                    $checkPass = checkPass($passNew);
+                    if($checkPass === true) {
+                        ## Xác thực mật khẩu mới
+                        $passVerify = $_POST['passVerify'];
+                        if(!empty($passVerify)) {
+                            if($passVerify === $passNew) $point_valid++;
+                            else $arr_error[] = "Xác thực mật khẩu mới không chính xác.";
+                        }else $arr_error[] = "Vui lòng điền xác thực mật khẩu mới.";
+                    }else $arr_error[] = $checkPass;
+                }else $arr_error[] = "Vui lòng điền mật khẩu mới.";
+            }else $arr_error[] = "Mật khẩu cũ không chính xác.";
+        }else $arr_error[] = "Vui lòng điền mật khẩu cũ.";
+        
+        ## Thay đổi
+        if($point_valid==1){
+            updatePass(md5($passNew),$_SESSION['user']['id']);
+            addAlert('success','<i class="fas fa-check-circle"></i> Thay đổi <strong>mật khẩu</strong> thành công !');
+        }else $activeModal = "onload"; //auto open modal
+    }
+
+
     require_once '../../view/user/header.php';
     require_once '../../view/user/info.php';
 }else{
     include "../../view/user/header.php";
     require_once '../../view/user/404.php';
 }
+?>

@@ -34,6 +34,11 @@ function updateAvatar($image,$id){
     pdo_execute($sql);
 }
 
+function updatePass($pass,$id){
+    $sql = "UPDATE accounts SET pass = '".$pass."',dateUpdate = current_timestamp() WHERE id = ".$id;
+    pdo_execute($sql);
+}
+
 /**
  * Trả về đường dẫn ảnh phụ thuộc vào USER[type]
  */
@@ -42,4 +47,21 @@ function urlPath(){
         if(strstr($_SESSION['user']['image'],'http')) return '';
     }
     return URL.'/uploads/user/avatar/';
+}
+
+/**
+ * Kiểm tra về validation của PASSWORD
+ * Trả về TRUE nếu hợp lệ, ngược lại trả về chuỗi thông báo lỗi
+ * @param string $input Mật khẩu cần kiểm tra
+ */
+function checkPass($input) {
+    $arr_input = mb_str_split(strtolower($input)); //tạo chuỗi thành mảng và đổi chữ in hoa -> thường
+    if(count(array_diff($arr_input,['!','@','#','$','%','^','&','*','(',')','-','+','=','.',0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'])) == 0){
+        if(strlen($input) >= 8){ //hàm strlen: đếm kí tự trong chuỗi
+            $word_0 = substr($input,0,1); //hàm substr: cắt chuỗi tại vị trí 0 và độ dài là 1 (cắt 1 kí tự)
+            if($word_0 === strtoupper($word_0)){
+                return true;
+            }return 'Mật khẩu phải viết hoa chữ cái đầu.';
+        }return 'Mật khẩu phải từ 8 kí tự trở lên.';
+    }else return 'Có kí tự không hợp lệ trong mật khẩu';
 }

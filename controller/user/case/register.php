@@ -13,13 +13,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $pass = $_POST['pass'];
         if(!empty($pass)){
-            if(strlen($pass) >= 8){ //hàm strlen: đếm kí tự trong chuỗi
-                $word_0 = substr($pass,0,1); //hàm substr: cắt chuỗi tại vị trí 0 và độ dài là 1 (cắt 1 kí tự)
-                if($word_0 === strtoupper($word_0)){
-                    $point_valid_register++;
-                    $checkVeryfyPass = true;
-                }else $arr_error[] = 'Mật khẩu phải viết hoa chữ cái đầu.';
-            }else $arr_error[] = 'Mật khẩu phải từ 8 kí tự trở lên.';
+            $checkPass = checkPass($pass);
+            if($checkPass==true) $point_valid_register++;
+            else $arr_error[] = $checkPass; 
         }else $arr_error[] = 'Chưa nhập mật khẩu.';
 
     $hovaten = $_POST['hovaten'];

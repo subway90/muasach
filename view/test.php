@@ -10,8 +10,8 @@ if($verify == true){
 
 <?php
 
-var_dump(strstr($_SESSION['user']['image'],'http'));exit;
-    function checkPass($input,$hash){
+var_dump(strstr($_SESSION['user']['image'],'http'));
+    function checkPassHash($input,$hash){
         $pass_verify = $hash;
         $enteredPassword = $input;
         if (password_verify($enteredPassword, $pass_verify)) return 1;
@@ -21,7 +21,7 @@ var_dump(strstr($_SESSION['user']['image'],'http'));exit;
     $password = 'HieuTest79@@';
     $hash = password_hash($password, PASSWORD_DEFAULT); 
     echo $hash;
-    echo '<br>'.checkPass('T1234563',$hash);
+    echo '<br>'.checkPassHash('T1234563',$hash);
     echo '<br>';
     echo formatTime('2024-05-31 12:24:38','MM/DD lúc hh:mm');
 

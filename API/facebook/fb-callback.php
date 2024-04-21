@@ -49,5 +49,7 @@ try {
 }
 
 $fbUser = $response->getGraphUser();
-if(!empty($fbUser)) $_SESSION['user_facebook'] = ['username' => $fbUser['id'],'fullName'=>$fbUser['name'],'image'=>$fbUser['picture']['url']];
-header("Location: ".ACT."dang-nhap");
+if(!empty($fbUser)) {
+    $_SESSION['user_facebook'] = ['username' => $fbUser['id'],'fullName'=>$fbUser['name'],'email'=>'','image'=>$fbUser['picture']['url']];
+    loginSocial(2);
+}

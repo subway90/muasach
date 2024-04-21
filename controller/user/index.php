@@ -22,6 +22,7 @@ if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 if(!isset($_SESSION['alert'])) $_SESSION['alert'] = "";
 if(!isset($_SESSION['alert_2'])) $_SESSION['alert_2'] = "";
 if(!isset($_SESSION['alert_3'])) $_SESSION['alert_3'] = [];
+if(!isset($_SESSION['user_google'])) $_SESSION['user_google'] = [];
 if(!isset($_SESSION['user_facebook'])) $_SESSION['user_facebook'] = [];
 
 # [COOKIE]

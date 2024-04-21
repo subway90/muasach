@@ -1,7 +1,16 @@
 <?php
 if(empty($_SESSION['user'])){
-    #FILE
-    require_once '../../API/facebook/facebook_source.php';
+    #LOGIN GOOGLE SUCCESS
+    if(!empty($_SESSION['user_google'])) {
+        extract($_SESSION['user_google']);
+        if(checkUserExist($username) === true) {
+            addAccount(3,$username,'',$fullName,$email,'','',$image);
+        }
+        #tự động ĐĂNG NHẬP 
+        autoLogin($username,'');
+        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
+        header('Location: '.ACT.'trang-chu');
+    }else require_once '../../API/google/google_source.php';
     #LOGIN FACEBBOK SUCCESS
     if(!empty($_SESSION['user_facebook'])){
         extract($_SESSION['user_facebook']);
@@ -13,13 +22,15 @@ if(empty($_SESSION['user'])){
         addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
         header('Location: '.ACT.'trang-chu');
         exit;
-    }
+    }else require_once '../../API/facebook/facebook_source.php';
+
     # Báo lỗi login FACEBOOK (bad request)
     if(isset($_GET['failed_connect_fb'])) {
         addAlert('danger','<i class="fas fa-times-circle"></i> Đăng nhập không thành công.');
         header('Location:'.ACT.'dang-nhap');
         exit;
     }
+
     # BIẾN KHỞI TẠO
     $subURL = "";
     $remember = "";

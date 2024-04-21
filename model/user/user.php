@@ -1,4 +1,7 @@
 <?php
+require_once '../../model/function.php';
+require_once '../../config/URL.php';
+
 function login($user,$pass){
     $sql = "SELECT * FROM accounts WHERE user= '".$user."' AND pass ='".$pass."' AND status = 1";
     return pdo_query_one($sql);
@@ -64,4 +67,25 @@ function checkPass($input) {
             }return 'Mật khẩu phải viết hoa chữ cái đầu.';
         }return 'Mật khẩu phải từ 8 kí tự trở lên.';
     }else return 'Có kí tự không hợp lệ trong mật khẩu';
+}
+
+/**
+ * Hàm để tự động đăng nhập của Account Social
+ * @param int $type 2: FACEBOOK, 3:GOOGLE
+ */
+function loginSocial($type){
+    if($type===2 || $type===3){
+        if($type===2) extract($_SESSION['user_facebook']);
+        if($type===3) extract($_SESSION['user_google']);
+        if(checkUserExist($username) === true) {
+            addAccount($type,$username,'',$fullName,$email,'','',$image);
+        }
+        #tự động ĐĂNG NHẬP 
+        autoLogin($username,'');
+        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
+        header('Location: '.ACT.'trang-chu');
+    }else {
+        addAlert('danger','<i class="fas fa-times"></i> <strong>Lỗi nghiêm trọng : loginSocial() is not valid $type</strong> !');
+        header('Location: '.ACT.'trang-chu');
+    }
 }

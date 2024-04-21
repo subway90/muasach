@@ -37,7 +37,7 @@
                                         <small class="mx-3 text-muted">hoặc với</small>
                                         <span class="">
                                             <!-- Google Login -->
-                                            <a href="#" class="btn border-1 btn-outline-danger">
+                                            <a href="<?=$authUrl?>" class="btn border-1 btn-outline-danger">
                                                 <div class="d-flex align-items-center"><i class="fab fa-google me-2"></i><small>google</small></div>
                                             </a>
                                             <!-- Facebook Login -->

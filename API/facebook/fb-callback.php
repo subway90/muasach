@@ -27,8 +27,9 @@ if (!isset($accessToken)) {
         echo "Error Reason: " . $helper->getErrorReason() . "\n";
         echo "Error Description: " . $helper->getErrorDescription() . "\n";
     } else {
-        header('HTTP/1.0 400 Bad Request');
-        echo 'Bad request';
+        // header('HTTP/1.0 400 Bad Request');
+        // echo 'Bad request';
+        header("Location: ".ACT."dang-nhap&failed_connect_fb");
     }
     exit;
 }

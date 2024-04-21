@@ -14,6 +14,12 @@ if(empty($_SESSION['user'])){
         header('Location: '.ACT.'trang-chu');
         exit;
     }
+    # Báo lỗi login FACEBOOK (bad request)
+    if(isset($_GET['failed_connect_fb'])) {
+        addAlert('danger','<i class="fas fa-times-circle"></i> Đăng nhập không thành công.');
+        header('Location:'.ACT.'dang-nhap');
+        exit;
+    }
     # BIẾN KHỞI TẠO
     $subURL = "";
     $remember = "";

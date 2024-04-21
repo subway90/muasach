@@ -37,7 +37,7 @@ if (!isset($accessToken)) {
 //Lấy thông tin của người dùng trên Facebook
 try {
     // Returns a `Facebook\FacebookResponse` object
-    $response = $fb->get('/me?fields=id,name,email,picture', $accessToken->getValue());
+    $response = $fb->get('/me?fields=id,name,picture', $accessToken->getValue());
     #DATA
     
 } catch (Facebook\Exceptions\FacebookResponseException $e) {
@@ -49,5 +49,5 @@ try {
 }
 
 $fbUser = $response->getGraphUser();
-if(!empty($fbUser)) $_SESSION['user_facebook'] = ['username' => $fbUser['id'],'fullName'=>$fbUser['name'],'email'=>$fbUser['email'],'image'=>$fbUser['picture']['url']];
+if(!empty($fbUser)) $_SESSION['user_facebook'] = ['username' => $fbUser['id'],'fullName'=>$fbUser['name'],'image'=>$fbUser['picture']['url']];
 header("Location: ".ACT."dang-nhap");

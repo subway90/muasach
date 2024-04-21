@@ -6,7 +6,7 @@ if(empty($_SESSION['user'])){
     if(!empty($_SESSION['user_facebook'])){
         extract($_SESSION['user_facebook']);
         if(checkUserExist($username) === true) {
-            addAccount(2,$username,'',$fullName,$email,'','',$image);
+            addAccount(2,$username,'',$fullName,'','','',$image);
         }
         #tự động ĐĂNG NHẬP 
         autoLogin($username,'');

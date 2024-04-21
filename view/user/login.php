@@ -37,13 +37,16 @@
                                         <small class="mx-3 text-muted">hoặc với</small>
                                         <span class="">
                                             <!-- Google Login -->
+                                            <?php if(LOGIN_GOOGLE) { ?>
                                             <a href="<?=$authUrl?>" class="btn border-1 btn-outline-danger">
                                                 <div class="d-flex align-items-center"><i class="fab fa-google me-2"></i><small>google</small></div>
                                             </a>
+                                            <?php } if(LOGIN_FACEBOOK){ ?>
                                             <!-- Facebook Login -->
                                             <a href="<?=$loginUrl?>" class="btn border-1 btn-outline-blue">
                                                 <div class="d-flex align-items-center"><i class="fab fa-facebook me-2"></i><small>facebook</small></div>
                                             </a>
+                                            <?php } ?>
                                         </span>
                                 </div>
                             </div>

@@ -10,7 +10,9 @@ if(empty($_SESSION['user'])){
         autoLogin($username,'');
         addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
         header('Location: '.ACT.'trang-chu');
-    }else require_once '../../API/google/google_source.php';
+    }else{
+        if(LOGIN_GOOGLE) require_once '../../API/google/google_source.php';
+    } 
     #LOGIN FACEBBOK SUCCESS
     if(!empty($_SESSION['user_facebook'])){
         extract($_SESSION['user_facebook']);
@@ -22,7 +24,9 @@ if(empty($_SESSION['user'])){
         addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
         header('Location: '.ACT.'trang-chu');
         exit;
-    }else require_once '../../API/facebook/facebook_source.php';
+    }else{
+        if(LOGIN_FACEBOOK) require_once '../../API/facebook/facebook_source.php';
+    }
 
     # Báo lỗi login FACEBOOK (bad request)
     if(isset($_GET['failed_connect_fb'])) {

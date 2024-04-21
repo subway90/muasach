@@ -11,6 +11,8 @@ const PASS_DB = '';
 # PAGE ACTIVE
 const PAGE_LOADING = true;
 const PAGE_UPDATE = false;
+const LOGIN_GOOGLE = true;
+const LOGIN_FACEBOOK = false;
 
 # SETTING TIME
 const TIME_CLOSE_ALERT = 3000;

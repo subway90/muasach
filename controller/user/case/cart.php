@@ -28,7 +28,7 @@ if(isset($_GET['close'])){
     if(empty($_SESSION['user'])) unset($_SESSION['cart']); //nếu chưa đăng nhập -> hủy SESSION CART
     else deleteAllCart($_SESSION['user']['id']); //nếu đã đăng nhập -> thực thi SQL Delete dữ liệu
     if($_GET['close']=='done'){
-        addAlert('success','Đơn hàng đã được tạo thành công, vui lòng chờ xác nhận !');
+        addAlert('success','<i class="fas fa-check-circle"></i> Đơn hàng đã được tạo thành công, vui lòng chờ xác nhận !');
         header("Location:".ACT."lich-su-mua-hang/".$token);
     }
     else header("Location:".ACT."gio-hang");

@@ -370,3 +370,39 @@ function showAlert(){
     }
     $_SESSION['alert_3'] = [];
 }
+
+/**
+ * Hàm này dùng để tạo ảnh captcha
+ * @param string $input Mã captcha cần tạo
+ * @return mixed Trả về ảnh .png
+ */
+function getCaptcha($input) {
+    // Xác thực đầu vào
+    if (empty($input) || strlen($input) > 10) exit('Đầu vào không hợp lệ');
+
+    header("Content-Type: image/png");
+    
+    $width = 100;
+    $height = 50;
+    
+    $image = @imagecreate($width, $height) or die("LỖI: Không thể tạo hình ảnh");
+    $background_color = imagecolorallocate($image, 67, 216, 84);
+    $text_color = imagecolorallocate($image, 255, 255, 255);
+    $line_color = imagecolorallocate($image, 255, 0, 0); // Màu đỏ cho đường gạch ngang
+
+    // Thêm một số nhiễu ngẫu nhiên
+    for ($i = 0; $i < 50; $i++) {
+        imagesetpixel($image, rand(0, $width), rand(0, $height), $text_color);
+    }
+
+    // Vẽ các đường gạch ngang
+    for ($i = 0; $i < 5; $i++) {
+        imageline($image, 0, rand(0, $height), $width, rand(0, $height), $line_color);
+    }
+
+    // Thêm chữ
+    imagestring($image, 5, 10, 15, $input, $text_color);
+    
+    imagepng($image);
+    imagedestroy($image);
+}

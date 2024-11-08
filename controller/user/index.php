@@ -55,8 +55,8 @@ if(isset($_GET['act'])){
     ##UPDATE
     if(PAGE_UPDATE === true) require_once 'case/update.php';
         switch($act) {
-            case "app":
-                require_once 'case/app.php';
+            case "captcha":
+                require_once 'case/captcha.php';
                 break;
             case "trang-chu":
                 $title='Trang chủ';

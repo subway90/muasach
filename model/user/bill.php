@@ -21,7 +21,9 @@ function getOneBillByToken($token){
     $result = pdo_query_one($sql);
     return $result;
 }
-function getDetailBillByToken($token,$idUser){
+function getDetailBillByToken($token){
+    if($_SESSION['user']) $idUser = $_SESSION['user']['id'];
+    else $idUser = 0;
     $sql = "SELECT bd.*, b.idUser idUser
     FROM billdetail bd
     JOIN bill b

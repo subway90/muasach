@@ -1,11 +1,11 @@
 <?php
 $previewBill = false;
 require_once "../../view/user/header.php";
-#    XEM CHI TIẾT
+
+    # CHI TIẾT BILL
     if(isset($arrayURL[1]) && !empty($arrayURL[1])){
-        # LẤY ???
-        if(!empty($_SESSION['user'])) $listDetail = getDetailBillByToken($arrayURL[1],$_SESSION['user']['id']);
-        else $listDetail = getDetailBillByToken($arrayURL[1],0);
+        # đã ĐĂNG NHẬP
+        $listDetail = getDetailBillByToken($arrayURL[1]);
         if(!empty($listDetail)){
             $Bill = getOneBillByToken($arrayURL[1]);
             extract($Bill);
@@ -24,7 +24,7 @@ require_once "../../view/user/header.php";
                 $Bill = getOneFieldByCustom('bill','*','token = "'.moveCharSpecial($_POST['token']).'" AND idUser = 0');
                 if(!empty($Bill)) {
                     extract($Bill);
-                    $listDetail = getDetailBillByToken($token,0);
+                    $listDetail = getDetailBillByToken($token);
                     $previewBill = false;
                 }else addAlert('danger','TOKEN '.$token.' không hợp lệ');
             }
@@ -41,7 +41,7 @@ if(1==2){
         $Bill = getOneFieldByCustom('bill','*','token = "'.moveCharSpecial($_POST['token']).'" AND idUser = 0');
         if(!empty($Bill)) {
             extract($Bill);
-            $listDetail = getDetailBillByToken($token,0);
+            $listDetail = getDetailBillByToken($token);
             $previewBill = false;
         }else addAlert('danger','TOKEN '.$token.' không hợp lệ');
     }

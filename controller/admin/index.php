@@ -1,6 +1,6 @@
 <?php
 # [FILE CONFIG]
-require_once "../../config/URL.php";
+require_once "../../config/ENV.php";
 require_once "../../config/APP.php";
 require_once "../../model/function.php";
 

@@ -1,3 +1,3 @@
 <?php
-require_once "config/ENV.php";
-header("Location:".ACT."trang-chu");
+require_once "config/URL.php";
+header("Location:".ACT);
